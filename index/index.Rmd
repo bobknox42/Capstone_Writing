@@ -1,9 +1,9 @@
 ---
-author: 'Student-t'
+author: 'Robert Knox, Adetola Adedeji, Xiaolei Zhang'
 date: 'Month, Year'
 institution: 'University of Chicago'
 division: 'Graham School'
-advisor: 'Advisor Name'
+advisor: 'Arnab Bose'
 altadvisor: 'Dr. Sema Barlas'
 department: 'Continuing Liberal and Professional Studies'
 degree: 'Master of Science in Analytics'
