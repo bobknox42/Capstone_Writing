@@ -1,10 +1,9 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # Findings {#findings .unnumbered}
-
-Should be organized as follows:
-
- - Results of descriptive analyses
- - Modeling results
- - Results of model performance and validation
 
 ## Results of descriptive analyses  {#findings-descriptive .unnumbered}
 
@@ -124,7 +123,7 @@ ggplot(data=cum_tot_pct_BP,aes(x=ID,y=cum_tot_pct_BP))+
   labs(x="Item Number Index",y="Percent Total",title="Cumulative Aggregate Quantity By Business Partner Index") +
   geom_vline(xintercept = 10)+
   geom_text(aes(x=13,y=0.93),label=paste("Top Ten:",prettyNum(cum_tot_pct_BP[10,]$cum_tot_pct*100,big.mark = ",",format="d",digits=2),"%"))+
-  scale_y_continuous(labels = percent)
+  scale_y_continuous(labels = scales::percent)
 ```
 
 ###External Data Collection
@@ -135,7 +134,7 @@ Google Trends returns a single value showing how frequently a given search term 
 
 Twitter data were gathered by collecting relevant tweets from Twitter using key search words  as shown in Table __ below. We can grab a tweet based on defined keyword from Twitter by calling the Twitter API function. Subsequently, we can categorize opinions expressed in a piece of text, in order to determine opinion on our research (i.e, positive, negative, or neutral). 
 
-```{r External_Data}
+```{r External_Data,echo=FALSE}
 library(kableExtra)
 External_Data_Source <- c('Google Trend','Twitter')
 Frequency_Granularity <- c('Monthly','Monthly')
@@ -148,10 +147,10 @@ test_table <- cbind(External_Data_Source,
                     Size,
                     Data_Type)
 test_table <- data.frame(test_table)
-colnames(test_table) <- c('External Data Source','Frequency / Granularity','Range','Size','Data Type')
+colnames(test_table) <- c('External Data Source','Frequency Granularity','Range','Size','Data Type')
 
 kable(test_table, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
+      format = "markdown", longtable = TRUE)
 ```
 
 Table __ above shows the description of the social media dataset. The google trend dataset based on relative search frequency is on a monthly basis. The monthly dataset at the time of reporting has 182 rows.
@@ -191,27 +190,21 @@ Subsequent seasonality & trend analysis to identify meaningful predictors
 
 Twitter Data
 
-We have collected tweets based on the keywords in Table 3 below. Tweets were aggregated on a monthly basis. Figure 20 below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
+We have collected tweets based on the keywords in Table 3 below. Tweets were aggregated on a monthly basis. The figure below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
 
-```{r}
-kable(test_table, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
-```
-
-```{r Tweets_Over_Time}
-
-```
+![Tweets over time]()
 
 Google Trend Analysis
 
 We collected Google Trend data consisting the same keywords as we did in Tweet collection. The Google Trends data was standardized and subsequently the cross correlation was found with respect to the Scholle bag sales. Figure __ displays the results of the cross correlation analysis.
 
-```{r CCF_Google}
+![CCF Google](./figure/CCF_Results_Google.png)
 
-```
-
-```{r Lags_Google}
-
+```{r Lags_Google,echo=FALSE}
+df_Google_Lags_path = "./data/Google_Lags.csv"
+df_Google_Lags = read.csv(df_Google_Lags_path)
+kable(df_Google_Lags, digit = 7, align = "r", caption = "Google Lags", 
+      format = "markdown", longtable = TRUE)
 ```
 
 In Table 4 above, we highlight cross-correlations greater than 0.5 and with a time period of greater than 8 months. Since the Scholle bag sales data are records of the demand are placed well in advance of the desired delivery date, we would expect a long lag window in order for the trends of social media to drive market forces that would affect demand. Red indicates positive relations and blue indicates negative correlations. The deeper the color, the greater its correlation with Scholle’s data. 
@@ -237,40 +230,28 @@ We used the spaCy English Core Web Large model to analyze each tweet to process 
 
 Spacy includes vector representations for individual words as well as entire entire sentences. See Figure 22 below for the Keyword Distance using Spacy.These are represented as 300 dimension Numpy arrays. To begin, we confirmed that were was a reasonable cosine distance measure between each of the keywords.
 
-```{r Keyword_Distance_Spacy}
-
-```
-
+![Spacy Keyword Distance](./figure/Keyword_Distance_Spacy.png)
 
 There is a reasonable distance between each of the keywords with the exception of bbq and barbecue but this is to be expected since they reference the same thing.
 
-In addition, vectors representations of each tweet can be extracted. For each tweet keyword we summarised all vectors by finding their mean values for each dimension. We then found the pairwise distance measures for these ‘average’ tweets.See in Figure 23 below
+In addition, vectors representations of each tweet can be extracted. For each tweet keyword we summarised all vectors by finding their mean values for each dimension. We then found the pairwise distance measures for these ‘average’ tweets. See in the figure below
 
-
-```{r Average_Tweet_Distance}
-
-```
+![Spacy Mean Vector Distance](./figure/Tweet_Distance_Spacy.png)
 
 Here, the “average” tweets are rather similar to each other with the greatest distance from tomato to salsa. 
 
 In future work we will leverage these vector representations of the tweets to conduct transfer learning to identify tweet sentiment.
 
-Sentiment Analysis using TextBlob
+**Sentiment Analysis using TextBlob**
 
 TextBlob is an open source Python library for conducting natural language processing. It has a built in sentiment analyzer that utilizes two axes of analysis Polarity and Subjectivity. 
 Polarity refers to a positive or negative sentiment and ranges from positive one to negative one respectively. Subjective expresses the subjectivity or objectivity of the text. See Figure 24 below for the Tweet Polarity. The subjectivity axis ranges from zero to positive one where 0 is very objective and 1 is very subjective. See Figure 25 below for the Tweet Subjectivity .
 
-```{r Polarity}
+![Tweet Polarity](./figure/Tweet_Polarity.png)
 
-```
+![Tweet Subjectivity](./figure/Tweet_Subjectivity.png)
 
-```{r Subjectivity}
-
-```
-
-```{r Tweet_Distribution}
-
-```
+![Tweet Distribution](./figure/Tweet_Distribution.png)
 
 TextBlob categorizes the vast majority of tweets as non-subjective non-polar.
 
@@ -281,12 +262,12 @@ With the tweets collected, we generated a sentiment index by taking each tweet�
 It is important to note the difference in scale relative to the Google Trends results; the correlations to the Twitter sentiment index are much weaker.
 
 The table below compiles the list of lagged values used in our analysis.
-```{r Tweet_Lag}
+```{r Tweet_Lag,echo=FALSE}
 library(kableExtra)
 df_Twitter_Lags_path = "./data/Twitter_Lags.csv"
 df_Twitter_Lags = read.csv(df_Twitter_Lags_path)
 kable(df_Twitter_Lags, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
+      format = "markdown", longtable = TRUE)
 ```
 
 
@@ -364,11 +345,11 @@ For both sMAPE and RMSE, the 2 year window shows much higher variability than th
 
 The reported model metrics are the mean values for each of the cross validation periods collected.
 
-```{r Prophet_Results}
+```{r Prophet_Results,echo=FALSE}
 df_Prophet_Results_path = "./data/Prophet_Results.csv"
-df_Prophet_Resultsh = read.csv(df_Prophet_Results_path)
-kable(df_Twitter, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
+df_Prophet_Results = read.csv(df_Prophet_Results_path)
+kable(df_Prophet_Results, digit = 7, align = "r", caption = "External Data Sources", 
+      format = "markdown", longtable = TRUE)
 ```
 
 ###Challenger Model sARIMA {.unnumbered}
@@ -378,11 +359,11 @@ Seasonality is a key feature of the dataset, as it was observed that the Tomato 
 For this challenger, we split the data into two groupings; harvest months (June -October) and all months. In the Table 7 & 8 below, we summarise the result for the model:
 
 
-```{r sArima_Results}
-df_Prophet_Results_path = "./data/Prophet_Results.csv"
-df_Prophet_Resultsh = read.csv(df_Prophet_Results_path)
-kable(df_Twitter, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
+```{r sArima_Results,echo=FALSE}
+df_sArima_Results_path = "./data/sArima_Results.csv"
+df_sArima_Results = read.csv(df_sArima_Results_path)
+kable(df_sArima_Results, digit = 7, align = "r", caption = "Seasonal Arima", 
+      format = "markdown", longtable = TRUE)
 ```
 
 In the figure below, the mean forecast value is highlighted in blue and the actual value is captured in red, and the confidence interval ranging between 80%-95%. The actual values are represented in black.
@@ -399,29 +380,29 @@ We explored the correlations of twitter data and Google trend Scholle tomato bag
 Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table 11 and Table 12.
 
 
-```{r}
+```{r All_Linear_Mod,echo=FALSE}
 df_lmod_all_path = "./data/lmod_all.csv"
 df_lmod_all = read.csv(df_lmod_all_path)
-kable(df_lmod_all, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
+kable(df_lmod_all, digit = 7, align = "r", caption = "Linear Model", 
+      format = "markdown", longtable = TRUE)
 ```
 
-Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table 11 and Table 12.
+Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table  and Table 12.
 
-```{r}
+```{r Stepped_Linear_Model, echo=FALSE}
 df_lmod_step_path = "./data/lmod_step.csv"
 df_lmod_step = read.csv(df_lmod_step_path)
-kable(df_lmod_step, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "latex", longtable = TRUE)
+kable(df_lmod_step, digit = 7, align = "r", caption = "Linear model with Regression Error", 
+      format = "markdown", longtable = TRUE)
 ```
 
 Positive coefficients imply that for a unit increase in the variable, there is a corresponding positive increase in the Scholle bag sales. Negative coefficients imply that for a unit increase in the variable, there is a corresponding negative decrease in the Scholle bag sales.The negative coefficient shows there is an inverse relationship between the  variable and Scholle bag sales.
 
-```{r}
-df_lmod_arima_path = "./data/lmod_arima.csv"
+```{r Reg_Arima_Err_Results,echo=FALSE}
+df_lmod_arima_path = "./data/Reg_Arima_Results.csv"
 df_lmod_arima = read.csv(df_lmod_arima_path)
-kable(df_lmod_arima, digit = 7, align = "r", caption = "Results", 
-      format = "latex", longtable = TRUE)
+kable(df_lmod_arima, digit = 7, align = "r", caption = "Regression with Arima Error Results", 
+      format = "markdown", longtable = TRUE)
 ```
 
 The above results indicate that Google trend data tend to have a greater influence in the predictions than twitter data, because the count in google searches is more direct in measuring the importance of the keywords and lags, compared to twitter data which might lose some information both due to the limitations in gathering tweet data and due to the complicated natural language preprocessing process. The ARIMA errors is (0,0,0), indicating our model has extracting enough informations and there’s no time series dynamics in the residuals.
@@ -432,23 +413,41 @@ The second challenger model we built was a Random Forest Regression Model. Rando
 
 One useful feature when using tree-based approaches for regression is the ability to use categorical or ordinal predictors without the need for one-hot-encoding. In our model we represented the date as a pair of categorical variables, one for year and a second for month. We chose to do this because of the seasonal nature of the data.
 
-In addition, we decided to challenge the model by only using lags that we thought to be have a reasonable explanation for their effect. To this end we chose to use lags between 6 and 12 months. Our logic was that it would take time for an increase or decrease in the social media presence of one of the keywords selected to go from an uptick in interest of consumer products to be captured by Scholle’s bag sales.
+In addition, we decided to challenge the model by only using lags that we thought to be have a reasonable explanation for their effect. To this end we chose to use lags greater than 9 months. Our logic was that it would take time for an increase or decrease in the social media presence of one of the keywords selected to go from an uptick in interest of consumer products to be captured by Scholle’s bag sales.
 
-Table 13 displays the results of our Random Forest model.
+The table below displays the results of our Random Forest model.
 
-```{r}
-df_RF_path = "./data/RF.csv"
+```{r RF_Results, echo = FALSE}
+df_RF_path = "./data/RF_Results.csv"
 df_RF = read.csv(df_RF_path)
 kable(df_RF, digit = 7, align = "r", caption = "Random Forest Results", 
-      format = "latex", longtable = TRUE)
+      format = "markdown", longtable = TRUE)
 ```
 
 An important feature of Random Forest modelling is its ability to generate rank-ordered summaries of variable importance. The model’s feature importance is displayed in the figure below.
 
-![Random Forest Importance](./figure/RF_Importance.png)
+![Random Forest Importance](./figure/RF_V_Imp.png)
 
-The most important features are displayed at the top of this chart, in this the Google Trends lag 12 salsa was the most important predictor followed closely by the month of the year. This agrees with the importance of monthly seasonality that we observed in the other models.
+The most important features are displayed at the top of this chart, in this the month was the most important predictor followed closely by google salsa data at lag 12. This agrees with the importance of monthly seasonality that we observed in the other models.
 
-##Model Aggregation
+###Challenger Model - XGBoost {.unnumbered}
+XGBoost is an implementation of gradient boosted decision trees designed for speed and performance. It build trees one at a time, where each new tree helps to correct errors made by previously trained tree.
 
+```{r xgb_Results,echo =FALSE}
+df_xgb_path = "./data/xgb_Results.csv"
+df_xgb = read.csv(df_xgb_path)
+kable(df_xgb, digit = 7, align = "r", caption = "xgBoost Results", 
+      format = "markdown", longtable = TRUE)
+```
 
+###Stacking Forecasts {.unnumbered}
+
+Our project focuses only on the ship-to date sales number. The overall time range from people speaking about keywords on social media, to its influence on tomato demand, and then to the whole order, manufacture and ship process takes place for at least 9 months. So we think it’s more meaningful to exclude lags shorter than 9 months. We explored the correlations between Scholle tomato bag sales and twitter data as well as Google trend with lags from 9 months up to 24 months, and built regression with ARIMA model using only the keywords and lags exhibiting strongly correlations. 
+
+Based on discussions with Scholle, we limited the scope to simply the months of June through October, the months when tomatoes become ripe in California. We refer to these months as the harvest months.
+
+The stacking method is used to create an additional consensus model by using the results of trained models. There are two approaches we used for stacking, simple averaging and creation of a linear model.
+
+We then combined our forecast results from all models mentioned prior in this report, including the ARIMA model built only on the more stationary harvest months, the regression with ARIMA errors model using on strong correlated keywords and lags, random forest model, XGBoost model and Prophet model. We averaged the forecasts of all combinations of the models. We found that we were able to improve the model predictions by combining the Random Forest and Regression with Arima Error models predictions using a simple average.
+
+The second approach to stacking we attempted was to build a linear model using the results of all our other models. This model was trained on all the harvest month data for 2014-2018. The fitted values produced a better estimate of the actual than the simple average of Random Forest and Regression with Arima Error. However, we must consider the amount of information the additional variables add to the regression. When we applied the step function we achieved a minimized AIC for a linear model composed of just arima with Regression Error & Random Forest. The linear combination of the two slightly weighs more towards the Random Forest over the Regression with Arima Error.

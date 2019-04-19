@@ -1,0 +1,3 @@
+,sMAPE,RMSE,% Bias,Accuracy
+Train,15%,55311.64,11%,0.52
+Test,35%,88097.99,44%,2
