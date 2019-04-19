@@ -1,14 +1,14 @@
+Abstract
 
-Maximum 40 to 50 words. An abstract is a concise description of your project. It should include very brief description of the problem, purpose, method, key results, and conclusions. Note you may want to write the abstract after writing the report.
-
-\bigskip 
-\bigskip
-\bigskip
-
-**Keywords**: Include 6 to 10 keywords on the same page as the abstract. Select keywords that would help a researcher retrieve your report. 
+Our research focus was on improving the forecast of tomato/bag sales for a company named Scholle by using social media conversation. We received Sales data from Scholle spanning period of 2010 to 2018.Lagged social media data sourced from Twitter and Google Trends was regressed on Scholle data using various time series model.  Random Forest Model was found to be the most successful in predicting the Tomato bags Sales. From this study, we developed a set of analytical models when applied by Scholle improved the prediction of Tomato bag sales using social media data.
 
 \bigskip 
 \bigskip
 \bigskip
 
-**NOTE:** Do not use "#" or "##" symbols to start new sections in the abstract section, as one typically would in other r markdown documents. Doing so will result in generating a table of contents entry _prior_ to the Introduction, which is not desirable.
+**Keywords**: Forecast, Social media data, Regression, Scholle data, time series model, Random Forest Model
+
+\bigskip 
+\bigskip
+\bigskip
+
