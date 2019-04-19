@@ -158,7 +158,7 @@ Table __ above shows the description of the social media dataset. The google tre
 
 The Twitter data are sampled via a quasi-random approach that grabs data monthly over the entire period of  2007 - 2018. We had to employ this method of querying due to the nature of the Twitter API and its restrictions on total tweets returned. The Twitter API returns tweets in reverse chronological order. The total number of tweets that would mention one of our keywords would be vastly larger than the number we could collect over the course of our data collection period (January 2019 - March 2019). Limited in this way, we decided to strategically collect tweets from each month of the year between January 2007 and March 2019.
 
-Assumptions & Limitation
+**Assumptions & Limitation**
  
 Google Trends
 Assumptions
@@ -169,7 +169,7 @@ Limitation: The actual number of searches for the term being queried is not made
 
 Resolution: Each term selected will be queried individually.
  
-Twitter Datasets
+**Twitter Datasets**
 Assumptions
 We limited Twitter data to the United States.
 The frequency of tweets we collected for each keyword will be independent of the time period in which we collected them.
@@ -179,11 +179,11 @@ The demographic information of the twitter account user cannot be determined.
 With the limitation of our premium account API activity, we can only submit 100 requests to collect tweet per month. Per each request, we can get a maximum of 500 tweets back.
 The language associated with the Twitter account returned from the API does not guarantee the language of the Tweet. While we specified English language tweets, we received many tweets that were not in English. We subsequently dropped these tweets.
 
-Plan for use
+**Plan for use**
  
 Twitter data
-Develop a sentiment index for all tweets using natural language processing techniques
-Utilize SpaCy Library to analyze how similar or discrepant the meaning of tweets among each keyword
+We developed a sentiment index for all tweets using natural language processing techniques
+tilizing the textblob Library to analyze how similar or discrepant the meaning of tweets among each keyword
 
 Google Trends
 Correlation analysis of frequency of individual search terms compared to quantity
@@ -198,22 +198,257 @@ kable(test_table, digit = 7, align = "r", caption = "External Data Sources",
       format = "latex", longtable = TRUE)
 ```
 
-
-## Modeling results  {.unnumbered}
-
-First, use a `t.test()` to test _if_ dosage leads to growth of incisor length. From the results below, it appears every test rejects the null hypothesis.
-
-
-
-## Results of model performance and validation  {.unnumbered}
-
-Next, subset the `ToothGrowth` data into seperate data sets defined by supplement dose of 0.5, 1, and 2 mg. This allow us to controlling for dose increases of _economic_ significance.
-
-Subset tooth data into a separate `data.frame` for each dosage level. Then Execute the `t.test()` function for the dosage of 0.5 mg and display the results. 
-
-```{r}
+```{r Tweets_Over_Time}
 
 ```
 
+Google Trend Analysis
+
+We collected Google Trend data consisting the same keywords as we did in Tweet collection. The Google Trends data was standardized and subsequently the cross correlation was found with respect to the Scholle bag sales. Figure __ displays the results of the cross correlation analysis.
+
+```{r CCF_Google}
+
+```
+
+```{r Lags_Google}
+
+```
+
+In Table 4 above, we highlight cross-correlations greater than 0.5 and with a time period of greater than 8 months. Since the Scholle bag sales data are records of the demand are placed well in advance of the desired delivery date, we would expect a long lag window in order for the trends of social media to drive market forces that would affect demand. Red indicates positive relations and blue indicates negative correlations. The deeper the color, the greater its correlation with Scholle’s data. 
+
+###Tweet Sentiment Analysis {.unnumbered}
+We have conducted the following steps to conduct the sentiment analysis of the tweets.
+
+**Text Cleanup Pipeline:**
+1. Remove RT, URLs and non-text characters (except @ and punctuation symbols)
+2. Handle mentions by replacing with upper case letters.
+3. Remove all remaining non-text characters (including @ symbol and excluding punctuation symbols).
+4. Check the language of the cleaned up tweet and drop any tweets that are not in English.
+
+**SpaCy Pipeline:**
+
+We used the spaCy English Core Web Large model to analyze each tweet to process into three data sets:
+1. Tokenization - each tweet was broken into its component elements of words, punctuation, etc.
+2. Dependency Parsing - Annotate the tweet to add the syntactic dependency within the tweet i.e. compare link verbs to their respective nouns.
+3. Named Entities - Each tweet was analyzed to identify the named entities in the tweet. These entities will include the mentions because they were capitalized in the Text Cleanup Pipeline.
+4. Removal of stop words - all stop words identified were removed.
+
+**Vector Extraction:**
+
+Spacy includes vector representations for individual words as well as entire entire sentences. See Figure 22 below for the Keyword Distance using Spacy.These are represented as 300 dimension Numpy arrays. To begin, we confirmed that were was a reasonable cosine distance measure between each of the keywords.
+
+```{r Keyword_Distance_Spacy}
+
+```
+
+
+There is a reasonable distance between each of the keywords with the exception of bbq and barbecue but this is to be expected since they reference the same thing.
+
+In addition, vectors representations of each tweet can be extracted. For each tweet keyword we summarised all vectors by finding their mean values for each dimension. We then found the pairwise distance measures for these ‘average’ tweets.See in Figure 23 below
+
+
+```{r Average_Tweet_Distance}
+
+```
+
+Here, the “average” tweets are rather similar to each other with the greatest distance from tomato to salsa. 
+
+In future work we will leverage these vector representations of the tweets to conduct transfer learning to identify tweet sentiment.
+
+Sentiment Analysis using TextBlob
+
+TextBlob is an open source Python library for conducting natural language processing. It has a built in sentiment analyzer that utilizes two axes of analysis Polarity and Subjectivity. 
+Polarity refers to a positive or negative sentiment and ranges from positive one to negative one respectively. Subjective expresses the subjectivity or objectivity of the text. See Figure 24 below for the Tweet Polarity. The subjectivity axis ranges from zero to positive one where 0 is very objective and 1 is very subjective. See Figure 25 below for the Tweet Subjectivity .
+
+```{r Polarity}
+
+```
+
+```{r Subjectivity}
+
+```
+
+```{r Tweet_Distribution}
+
+```
+
+TextBlob categorizes the vast majority of tweets as non-subjective non-polar.
+
+With the tweets collected, we generated a sentiment index by taking each tweet’s subjectivity & polarity and multiplied them by the retweet count for that tweet. We then aggregated the sentiment index at the monthly level for each keyword. The cross correlation between the Scholle data and the sentiment monthly index for the overall sentiment and for each keyword was calculated and the results displayed in the figure below.
+
+![Twitter CCF](./figure/CCF_Twitter_Results.png)
+
+It is important to note the difference in scale relative to the Google Trends results; the correlations to the Twitter sentiment index are much weaker.
+
+The table below compiles the list of lagged values used in our analysis.
+```{r Tweet_Lag}
+library(kableExtra)
+df_Twitter_Lags_path = "./data/Twitter_Lags.csv"
+df_Twitter_Lags = read.csv(df_Twitter_Lags_path)
+kable(df_Twitter_Lags, digit = 7, align = "r", caption = "External Data Sources", 
+      format = "latex", longtable = TRUE)
+```
+
+
+
+### Model Selection Metrics {.unnumbered}
+
+Selection of Metrics 
+
+In order to determine the best model, we began by choosing selection metrics to test each model against. The following metrics outlined below will be used to measure the performance of each model.
+1. SMAPE 
+2. RMSE 
+3. % bias – no of time above forecast vs below.
+4. Accuracy
+
+**sMAPE -Symmetric Mean Absolute Percentage Error**
+
+Symmetric mean absolute percentage error (sMAPE) is an accuracy measure based on percentage (or relative) errors. It allows us to understand error independent of scale.
+
+$$sMAPE=\frac{100\%}{n}\frac{|A_t-F_t|}{(|A_t|+|F_t|)/2}$$
+
+sMAPE has a lower bound of 0% and an upper bound of 100%.  The best value will be 0% while the worst value will be 100%.
+
+The major limitation with sMAPE is that it gives more penalties to underestimates  than overestimates.
+
+
+**RMSE- Root Mean Squared Error**
+
+The root mean squared error (RMSE) of an estimator measures the average of the squares of the errors—that is, the average squared difference between the estimated values and what is estimated. The square root of this value is then taken to produce the RMSE.
+
+$$RMSE = \sqrt{\frac{\sum^n(A_t-F_t)^2}{n}}$$
+
+RMSE measures  the variation between predicted and measured values and it provides us a basis for measuring the model variance on the same scale as the data.
+
+The RMSE is a measure of the quality of an estimator. RMSE is always non-negative, as the process of squaring removes any negative signs. It also penalizes larger differences. The best value is zero while the worst value is unbounded.
+
+In sum, the lower the RMSE, the smaller the error, the better the estimator.
+
+**Percent Bias – ratio of model high or low.**
+
+Bias refers to the propensity of a measurement process to over- or under-estimate the value of a population parameter. Percent bias (PBIAS) measures the average tendency of the predicted values to be larger or smaller than the actual values.
+
+Percent Bias is calculated by taking the sign of the residual for each data point and setting positive values to 1 and negatives values to zero. These are then averaged and multiplied by 100 to produce a percentage. The best percentage bias is 50% - there are just as many over predictions as under predictions. The worst percentage bias is either 0% or 100% as the model is regularly over- or under-estimating the actual data.
+
+**Accuracy - Mean Accuracy between Model & Actual**
+
+Accuracy measures the closeness of a model prediction to the actual value. In our case we are measuring the mean accuracy for all model predictions versus actual values. The best accuracy measure is 1; the prediction and the actual are the same so their ratio is 1. Accuracies that diverge from 1 are bad; a value greater than 1 means the prediction was higher than the actual while a value below 1 is means the predictions was lower than the actual. We aggregate the accuracy measure for each data point and find the overall mean. One precaution to consider by using this procedure is it may mask an underlying trend in prediction of the accuracy in which the model could overestimate early and then underestimate late or other non-linear behavior.
+
+**Training and Forecasting Windows**
+
+In order to evaluate our model to avoid either overfitting or underfitting , we split our dataset into a training set and a test set. Based on our discussions with Scholle, the test set will be the subsequent 18 months. The length of the training period was chosen based on the evaluation of the model stability of our baseline model using a rolling window cross validation.
+
+**Rolling Window Cross Validation**
+
+Time series data present a unique challenge in analysis in that the data are not independent - they are collected at regular intervals over the course of time. We employed rolling window cross validation to generate multiple train and test sets from the overall data set. Initially we explored the model stability of our baseline model and used the best criteria from that in order to decide the length of the cross validation window.
+
+Because of the highly seasonal nature of the data, we created a baseline model using only Scholle data. We used periods of 2-year, 4-year and 6-year windows, to identify the forecast window period with the greatest stability.
+
+## Results of model performance and validation  {.unnumbered}
+
+###Baseline Model - Prophet {.unnumbered}
+
+Prophet is an open-source tool developed by Facebook to conduct time series modeling. Prophet models data using a decomposable time series model with three main components: trend, seasonality, and holidays. The focus is to model the time series via regression instead of as a generative model like ARIMA would. This is done for flexibility, the ability to handle irregularly spaced data, speed, and interpretability.
+
+**Cross-Validation Window Selection**
+
+The figures below show results of the cross-validation analysis at 2, 4 and 6 year training windows using the Prophet Model. 
+
+![sMAPE CV Window Selection](./figure/Prophet_SMAPE_CV.png)
+
+![RMSE CV Window Selection](./figure/Prophet_RMSE_CV.png)
+
+For both sMAPE and RMSE, the 2 year window shows much higher variability than the 4 or 6 year windows. Given the similarity of the 4 and 6 year windows RMSE, we chose the 4 year window to both reduce the data requirements of the model and allow for additional cross-validation of each other model. A 4 year cross validation allows us to generate 42 complete training and testing windows whereas A 6 year cross validation window only allows us to generate 18.
+
+**Baseline Model Results**
+
+The reported model metrics are the mean values for each of the cross validation periods collected.
+
+```{r Prophet_Results}
+df_Prophet_Results_path = "./data/Prophet_Results.csv"
+df_Prophet_Resultsh = read.csv(df_Prophet_Results_path)
+kable(df_Twitter, digit = 7, align = "r", caption = "External Data Sources", 
+      format = "latex", longtable = TRUE)
+```
+
+###Challenger Model sARIMA {.unnumbered}
+
+Seasonality is a key feature of the dataset, as it was observed that the Tomato bags  sales increase significantly during summer time from June to August and drop in September and October while repeating this cycle annually.This key attributes in the dataset  meant we  deploy a model that uses differencing at a lag equalling the number of seasons to remove additive seasonal effect.
+
+For this challenger, we split the data into two groupings; harvest months (June -October) and all months. In the Table 7 & 8 below, we summarise the result for the model:
+
+
+```{r sArima_Results}
+df_Prophet_Results_path = "./data/Prophet_Results.csv"
+df_Prophet_Resultsh = read.csv(df_Prophet_Results_path)
+kable(df_Twitter, digit = 7, align = "r", caption = "External Data Sources", 
+      format = "latex", longtable = TRUE)
+```
+
+In the figure below, the mean forecast value is highlighted in blue and the actual value is captured in red, and the confidence interval ranging between 80%-95%. The actual values are represented in black.
+
+![Arima(0,0,2)(0,1,1)12 with Drift](./figure/Arima_All.png)
+![Arima(0,0,0)(2,1,0)5](./figure/Arima_Harvest)
+
+###Challenger Model - Regression with ARIMA Errors### {unnumbered}
+
+The first challenger model we built is regression model with ARIMA errors. While the regression model allows for the inclusion of predictor variables, it does not allow for the subtle time series dynamics that can be handled with ARIMA models. The regression with ARIMA errors model solves this problem by fitting regression models with all the relevant variables first, and then applying ARIMA to the residuals of the regression to detect time series elements in the residuals. 
+
+We explored the correlations of twitter data and Google trend Scholle tomato bag sales and found the keywords and lags in Table 4 and Table 6 tend to strongly correlated with tomato bag sales. Since the regression with ARIMA errors is based on linear regression, we first build a linear regression model these keywords and lags. Results are shown in below Table 10. Significant variables are highlighted in green.
+
+Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table 11 and Table 12.
+
+
+```{r}
+df_lmod_all_path = "./data/lmod_all.csv"
+df_lmod_all = read.csv(df_lmod_all_path)
+kable(df_lmod_all, digit = 7, align = "r", caption = "External Data Sources", 
+      format = "latex", longtable = TRUE)
+```
+
+Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table 11 and Table 12.
+
+```{r}
+df_lmod_step_path = "./data/lmod_step.csv"
+df_lmod_step = read.csv(df_lmod_step_path)
+kable(df_lmod_step, digit = 7, align = "r", caption = "External Data Sources", 
+      format = "latex", longtable = TRUE)
+```
+
+Positive coefficients imply that for a unit increase in the variable, there is a corresponding positive increase in the Scholle bag sales. Negative coefficients imply that for a unit increase in the variable, there is a corresponding negative decrease in the Scholle bag sales.The negative coefficient shows there is an inverse relationship between the  variable and Scholle bag sales.
+
+```{r}
+df_lmod_arima_path = "./data/lmod_arima.csv"
+df_lmod_arima = read.csv(df_lmod_arima_path)
+kable(df_lmod_arima, digit = 7, align = "r", caption = "Results", 
+      format = "latex", longtable = TRUE)
+```
+
+The above results indicate that Google trend data tend to have a greater influence in the predictions than twitter data, because the count in google searches is more direct in measuring the importance of the keywords and lags, compared to twitter data which might lose some information both due to the limitations in gathering tweet data and due to the complicated natural language preprocessing process. The ARIMA errors is (0,0,0), indicating our model has extracting enough informations and there’s no time series dynamics in the residuals.
+
+###Challenger Model - Random Forest Regression### {.unnumbered}
+
+The second challenger model we built was a Random Forest Regression Model. Random Forest leverages many regression trees to build a consensus model in addition to bootstrap aggregation or bagging to generate additional augmented data. Bagging simply builds additional training sets by sampling with replacement from provided training data. Each individual tree uses the bagged training data and selects a random subset of features at each branching point rather than all features available to build the regression. This restriction forces the model to create a more robust estimator.
+
+One useful feature when using tree-based approaches for regression is the ability to use categorical or ordinal predictors without the need for one-hot-encoding. In our model we represented the date as a pair of categorical variables, one for year and a second for month. We chose to do this because of the seasonal nature of the data.
+
+In addition, we decided to challenge the model by only using lags that we thought to be have a reasonable explanation for their effect. To this end we chose to use lags between 6 and 12 months. Our logic was that it would take time for an increase or decrease in the social media presence of one of the keywords selected to go from an uptick in interest of consumer products to be captured by Scholle’s bag sales.
+
+Table 13 displays the results of our Random Forest model.
+
+```{r}
+df_RF_path = "./data/RF.csv"
+df_RF = read.csv(df_RF_path)
+kable(df_RF, digit = 7, align = "r", caption = "Random Forest Results", 
+      format = "latex", longtable = TRUE)
+```
+
+An important feature of Random Forest modelling is its ability to generate rank-ordered summaries of variable importance. The model’s feature importance is displayed in the figure below.
+
+![Random Forest Importance](./figure/RF_Importance.png)
+
+The most important features are displayed at the top of this chart, in this the Google Trends lag 12 salsa was the most important predictor followed closely by the month of the year. This agrees with the importance of monthly seasonality that we observed in the other models.
+
+##Model Aggregation
 
 
