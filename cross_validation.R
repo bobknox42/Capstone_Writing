@@ -1,4 +1,4 @@
-setwd("C:/Users/Bob/Documents/Capstone_Writing/")
+#setwd("C:/Users/Bob/Documents/Capstone_Writing/")
 file <- "./index/data/english_tweets_with_sentiment.csv"
 
 df <- read.csv(file)
@@ -251,7 +251,7 @@ df_hm_goog %>%
   scale_fill_distiller(palette = "Spectral")+
   xlab("Keyword")+
   ylab("Lag")+
-  labs(title="Cross Correlation Analysis:Twitter Results")
+  labs(title="Cross Correlation Analysis:Google Results")
 
 df_hm_goog %>%
   filter(Var1 < -9) %>%
@@ -306,6 +306,7 @@ df_train <- df_all[1:89,c(1,4:10)]
 df_test <- df_all[90:107,c(1,4:10)]
 
 lm_all <- lm(y~.,data = df_train)
+lm_all$coefficients
 summary(lm_all)
 lm_step <- step(lm_all,direction = "both")
 summary(lm_step)
@@ -323,6 +324,7 @@ checkresiduals(resids_train)
 str(resids_train)
 #figure out the arima model that fits the residuals
 aa <- auto.arima(ts(resids_train,start=c(2010,1),frequency=12),stepwise = F)
+aa
 checkresiduals(aa)
 
 k <- 12*4 # minimum data lengdth for fitting a model: 4 years
@@ -884,8 +886,8 @@ harvest_summary
 
 sqrt(colSums((y_agg_harvest[10:25,1:14] - y_act_harvest_22[10:25])^2))
 min(sqrt(colSums((y_agg_harvest[10:25,1:14] - y_act_harvest_14[10:25])^2)))
-
-df_harvest_all <- data.frame(y_act_harvest)
+y_act_harvest
+df_harvest_all <- data.frame(cbind(y = y_act_harvest[,1],y_agg_harvest[1:5]))
 df_harvest_all
 
 #blend all predictions w/ a linear model

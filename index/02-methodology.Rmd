@@ -17,9 +17,9 @@ We began with exploratory data analysis to help understand the Scholle data and 
 
 #### Distribution of Quantity {#methodology-EDA-Distr-Quantity .unnumbered}
 
-Order quantity is typically less than 50,000 bags, with a few orders significantly higher. Specifically, most order quantities are less than 30,000 bags. See \@ref(fig:Quantity_Histogram) below for histogram of Quantity.
+Order quantity is typically less than 50,000 bags, with a few orders significantly higher. Specifically, most order quantities are less than 30,000 bags. See \@ref(fig:Quantity-Histogram) below for histogram of Quantity.
 
-```{r Quantity_Histogram, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Histogram of Quantity", fig.width=6}
+```{r Quantity-Histogram, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Histogram of Quantity", fig.width=6}
 folder <- "C:/Users/Bob/Desktop/Capstone"
 rawdata <- read.csv(paste(folder,"Sales_data_for_Capstone_Project_-_Student_Version_-_v3_CLEAN.csv",sep = "/"))
 coerce_cols <- c("fiscalquartername","FiscalPeriod","Company","Top_Most_BP","BusinessPartner","Item_Number","Item_Description","Ship_to_State","Ship_to_City","Line_of_Business")
@@ -46,7 +46,7 @@ Quantity is not normally distributed but is instead heavily skewed left. Large q
 
 The figure below plots the aggregated Quantity over time. 
 
-```{r Quantity_Time, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Quantity over Time", fig.width=6}
+```{r Quantity-Time, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Quantity over Time", fig.width=6}
 library(lubridate)
 library(dplyr)
 library(stringr)
@@ -83,7 +83,7 @@ proc_data_complete%>%
 
 There is a large degree of seasonal behavior. Tomato bag shipments increase during summer time from June to August and begin to drop off in September and October. Quantity is very small during other months of the year. This seasonality is easier to observe in the chart below which aggregates bag shipments for each month of the year.
 
-```{r Quantity_Month, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Monthy Quantity by Year", fig.width=6}
+```{r Quantity-Month, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Monthy Quantity by Year", fig.width=6}
 proc_data_complete %>%
   group_by(Date)%>%
   ggplot(aes(x = year, y = tot))+ 
@@ -100,7 +100,8 @@ There is little year to year variation exhibited in each month, with the possibl
 ####Quantity by Item Number {#methodology-IN .unnumbered}
 
 In addition to exploring the shipment quantity by time, we also observed the effect that the Item Number on Quantity. Over 86% of shipments are driven by the top 10 out of a total of 60 item numbers.
-```{r IN_cumulative, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Cumulative Sales by Item Number", fig.width=6}
+
+```{r IN-cumulative, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Cumulative Sales by Item Number", fig.width=5}
 #Cumulative aggregate by Item Number
 totals_by_Item_Number <- aggregate(Quantity~Item_Number,data=df,sum)
 totals_by_Item_Number <- totals_by_Item_Number[order(totals_by_Item_Number$Quantity,decreasing = T),]
@@ -117,7 +118,7 @@ ggplot(data=cum_tot_pct,aes(x=ID,y=cum_tot_pct))+
   scale_y_continuous(labels = scales::percent)
 ```
 
-```{r}
+```{r IN-time,echo=FALSE,warning=FALSE,  message=FALSE,fig.cap="Top 10 Item Number Quantity over Time", fig.width=5}
 proc_data_complete %>%
   group_by(Item_Number)%>%
   summarise(tot=sum(tot))%>%
@@ -143,15 +144,15 @@ Quantity by Item Number does not greatly vary greatly from the aggregated Quanti
 
 ## Descriptive analyses {#methodology-descriptive .unnumbered} 
 
-###External Data Collection
+###External Data Collection {#methodology-external-data .unnumbered}
 
 Google engine search and twitter are important and representative social media sources whose data is accessible. We collected social media data from two sources: Twitter and the Google Trends. Google Trends summarized US monthly search statistics from 2004 to 2019. The twitter data collected are of US users from 2007 to 2018.
 
 Google Trends returns a single value showing how frequently a given search term (e.g. ‘Tomato’) goes in Google’s search engine relative to its total search frequency for a given period. 
 
-Twitter data were gathered by collecting relevant tweets from Twitter using key search words  as shown in Table __ below. We can grab a tweet based on defined keyword from Twitter by calling the Twitter API function. Subsequently, we can categorize opinions expressed in a piece of text, in order to determine opinion on our research (i.e, positive, negative, or neutral). 
+Twitter data were gathered by collecting relevant tweets from Twitter using key search words  as shown in Table tab below. We can grab a tweet based on defined keyword from Twitter by calling the Twitter API function. Subsequently, we can categorize opinions expressed in a piece of text, in order to determine opinion on our research (i.e, positive, negative, or neutral). 
 
-```{r External_Data,echo=FALSE}
+```{r External-Data,echo=FALSE,warning=FALSE, message=FALSE}
 library(kableExtra)
 External_Data_Source <- c('Google Trend','Twitter')
 Frequency_Granularity <- c('Monthly','Monthly')
@@ -170,33 +171,48 @@ kable(test_table, digit = 7, align = "r", caption = "External Data Sources",
       format = "markdown", longtable = TRUE)
 ```
 
-Table __External_Data above shows the description of the social media dataset. The google trend dataset based on relative search frequency is on a monthly basis. The monthly dataset at the time of reporting has 182 rows.
+Table \@ref(tab:External-Data) above shows the description of the social media dataset. The google trend dataset based on relative search frequency is on a monthly basis. The monthly dataset at the time of reporting has 182 rows.
 
 The Twitter data are sampled via a quasi-random approach that grabs data monthly over the entire period of  2007 - 2018. We had to employ this method of querying due to the nature of the Twitter API and its restrictions on total tweets returned. The Twitter API returns tweets in reverse chronological order. The total number of tweets that would mention one of our keywords would be vastly larger than the number we could collect over the course of our data collection period (January 2019 - March 2019). Limited in this way, we decided to strategically collect tweets from each month of the year between January 2007 and March 2019.
 
 **Assumptions & Limitations**
  
-Google Trends
-Assumptions
-We limited the Google Trends search to the United States.
-The keywords are independent of each other.
+**Google Trends**
+Assumptions:
 
-Limitation: The actual number of searches for the term being queried is not made available. Instead, the data are reported from 0-100, where 100 represents the maximum relative search frequency.
+* We limited the Google Trends search to the United States.
 
-Resolution: Each term selected will be queried individually.
+* The keywords are independent of each other.
+
+Limitation: 
+
+* The actual number of searches for the term being queried is not made available. Instead, the data are reported from 0-100, where 100 represents the maximum relative search frequency.
  
 **Twitter Datasets**
-Assumptions
-We limited Twitter data to the United States.
-The frequency of tweets we collected for each keyword will be independent of the time period in which we collected them.
+Assumptions:
 
-Limitations 
-The demographic information of the twitter account user cannot be determined.
-With the limitation of our premium account API activity, we can only submit 100 requests to collect tweet per month. Per each request, we can get a maximum of 500 tweets back.
-The language associated with the Twitter account returned from the API does not guarantee the language of the Tweet. While we specified English language tweets, we received many tweets that were not in English. We subsequently dropped these tweets.
+* We limited Twitter data to the United States.
+
+* The frequency of tweets we collected for each keyword will be independent of the time period in which we collected them.
+
+Limitations:
+* The demographic information of the twitter account user cannot be determined.
+
+* With the limitation of our premium account API activity, we can only submit 100 requests to collect tweet per month. Per each request, we can get a maximum of 500 tweets back.
+
+* The language associated with the Twitter account returned from the API does not guarantee the language of the Tweet. While we specified English language tweets, we received many tweets that were not in English. We subsequently dropped these tweets.
 
 **Plan for use**
- 
+
+Working with Scholle, we developed a list of keywords to target in our social media data collection. The keywords are listed in Table \@ref(tab:Keywords) below:
+
+```{r Keywords,echo=FALSE}
+kwords = c("bbq","chili","ketchup","pasta","pizza","salsa","spaghetti","tomato")
+
+kable(t(kwords), digit = 7, align = "c", caption = "Keywords", 
+      format = "markdown", longtable = TRUE)
+```
+
 Twitter data
 We developed a sentiment index for all tweets using natural language processing techniques
 tilizing the textblob Library to analyze how similar or discrepant the meaning of tweets among each keyword
@@ -207,16 +223,20 @@ Subsequent seasonality & trend analysis to identify meaningful predictors
 
 Twitter Data
 
-We have collected tweets based on the keywords in Table 3 below. Tweets were aggregated on a monthly basis. The figure below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
+We have collected tweets based on the keywords in Table  below. Tweets were aggregated on a monthly basis. The figure below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
 
 
 Google Trend Analysis
 
-We collected Google Trend data consisting the same keywords as we did in Tweet collection. The Google Trends data was standardized and subsequently the cross correlation was found with respect to the Scholle bag sales. Figure __ displays the results of the cross correlation analysis.
+We collected Google Trend data consisting the same keywords as we did in Tweet collection. The Google Trends data was standardized and subsequently the cross correlation was found with respect to the Scholle bag sales. Figure \@ref(fig:ccf-google) displays the results of the cross correlation analysis.
 
-![CCF Google](./figure/CCF_Results_Google.png)
+```{r ccf-google, out.width="400px", fig.align="center", fig.cap="CCF Google", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/CCF_Google_Results.png")
+```
 
-```{r Lags_Google,echo=FALSE}
+
+```{r Lags-Google,echo=FALSE}
 library(kableExtra)
 df_Google_Lags_path = "./data/Google_Lags.csv"
 df_Google_Lags = read.csv(df_Google_Lags_path)
@@ -224,36 +244,50 @@ kable(df_Google_Lags, digit = 7, align = "r", caption = "Google Lags",
       format = "markdown", longtable = TRUE)
 ```
 
-In Table __Lags_Google above, we highlight cross-correlations greater than 0.5 and with a time period of greater than 8 months. Since the Scholle bag sales data are records of the demand are placed well in advance of the desired delivery date, we would expect a long lag window in order for the trends of social media to drive market forces that would affect demand. Red indicates positive relations and blue indicates negative correlations. The deeper the color, the greater its correlation with Scholle’s data. 
+In Table \@ref(tab:Lags-Google) above, we highlight cross-correlations greater than 0.5 and with a time period of greater than 8 months. Since the Scholle bag sales data are records of the demand are placed well in advance of the desired delivery date, we would expect a long lag window in order for the trends of social media to drive market forces that would affect demand. Red indicates positive relations and blue indicates negative correlations. The deeper the color, the greater its correlation with Scholle’s data. 
 
 ###Tweet Sentiment Analysis {.unnumbered}
 We have conducted the following steps to conduct the sentiment analysis of the tweets.
 
 **Text Cleanup Pipeline:**
+
 1. Remove RT, URLs and non-text characters (except @ and punctuation symbols)
+
 2. Handle mentions by replacing with upper case letters.
+
 3. Remove all remaining non-text characters (including @ symbol and excluding punctuation symbols).
+
 4. Check the language of the cleaned up tweet and drop any tweets that are not in English.
 
 **SpaCy Pipeline:**
 
 We used the spaCy English Core Web Large model to analyze each tweet to process into three data sets:
+
 1. Tokenization - each tweet was broken into its component elements of words, punctuation, etc.
+
 2. Dependency Parsing - Annotate the tweet to add the syntactic dependency within the tweet i.e. compare link verbs to their respective nouns.
+
 3. Named Entities - Each tweet was analyzed to identify the named entities in the tweet. These entities will include the mentions because they were capitalized in the Text Cleanup Pipeline.
+
 4. Removal of stop words - all stop words identified were removed.
 
 **Vector Extraction:**
 
-Spacy includes vector representations for individual words as well as entire entire sentences. See Figure 22 below for the Keyword Distance using Spacy.These are represented as 300 dimension Numpy arrays. To begin, we confirmed that were was a reasonable cosine distance measure between each of the keywords.
+Spacy includes vector representations for individual words as well as entire entire sentences. See Figure  below for the Keyword Distance using Spacy.These are represented as 300 dimension Numpy arrays. To begin, we confirmed that were was a reasonable cosine distance measure between each of the keywords.
 
-![Spacy Keyword Distance](./figure/Keyword_Distance_Spacy.png)
+```{r spacy-keyword, out.width="400px", fig.align="center", fig.cap="Spacy Keyword Vector Distance", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/Keyword_Distance_Spacy.png")
+```
 
 There is a reasonable distance between each of the keywords with the exception of bbq and barbecue but this is to be expected since they reference the same thing.
 
 In addition, vectors representations of each tweet can be extracted. For each tweet keyword we summarised all vectors by finding their mean values for each dimension. We then found the pairwise distance measures for these ‘average’ tweets. See in the figure below
 
-![Spacy Mean Vector Distance](./figure/Tweet_Distance_Spacy.png)
+```{r spacy-average, out.width="400px", fig.align="center", fig.cap="Spacy Average Tweet Vector Distance", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/Tweet_Distance_Spacy.png")
+```
 
 Here, the “average” tweets are rather similar to each other with the greatest distance from tomato to salsa. 
 
@@ -264,17 +298,29 @@ In future work we will leverage these vector representations of the tweets to co
 TextBlob is an open source Python library for conducting natural language processing. It has a built in sentiment analyzer that utilizes two axes of analysis Polarity and Subjectivity. 
 Polarity refers to a positive or negative sentiment and ranges from positive one to negative one respectively. Subjective expresses the subjectivity or objectivity of the text. See Figure 24 below for the Tweet Polarity. The subjectivity axis ranges from zero to positive one where 0 is very objective and 1 is very subjective. See Figure 25 below for the Tweet Subjectivity .
 
-![Tweet Polarity](./figure/Tweet_Polarity.png)
+```{r tweet-polarity, out.width="400px", fig.align="center", fig.cap="Textblob Tweet Polarity", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/Tweet_Polarity.png")
+```
 
-![Tweet Subjectivity](./figure/Tweet_Subjectivity.png)
+```{r tweet-subjectivity, out.width="400px", fig.align="center", fig.cap="Textblob Tweet Subjectivity", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/Tweet_Subjectivity.png")
+```
 
-![Tweet Distribution](./figure/Tweet_Distribution.png)
+```{r tweet-distribution, out.width="400px", fig.align="center", fig.cap="Textblob Tweet Distribution", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/Tweet_Distribution.png")
+```
 
 TextBlob categorizes the vast majority of tweets as non-subjective non-polar.
 
 With the tweets collected, we generated a sentiment index by taking each tweet’s subjectivity & polarity and multiplied them by the retweet count for that tweet. We then aggregated the sentiment index at the monthly level for each keyword. The cross correlation between the Scholle data and the sentiment monthly index for the overall sentiment and for each keyword was calculated and the results displayed in the figure below.
 
-![Twitter CCF](./figure/CCF_Twitter_Results.png)
+```{r tweet-ccf, out.width="400px", fig.align="center", fig.cap="Twitter CCF Results", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/CCF_Twitter_Results.png")
+```
 
 It is important to note the difference in scale relative to the Google Trends results; the correlations to the Twitter sentiment index are much weaker.
 

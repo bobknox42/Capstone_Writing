@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.27)  20 APR 2019 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.3.27)  24 APR 2019 15:41
 entering extended mode
 **./UChicago-MScA-Capstone.tex
 (UChicago-MScA-Capstone.tex
@@ -967,38 +967,39 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/lmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
-) ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ltxmisc\parskip.st
-y"
+)
+Package color Info: Redefining color shadecolor on input line 65.
+("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty"
 Package: parskip 2001/04/09 non-zero parskip adjustments
 ) (UChicago-MScA-Capstone.aux)
 \openout1 = `UChicago-MScA-Capstone.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 167.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 167.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 205.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 205.
 
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 167.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 205.
+LaTeX Font Info:    ... okay on input line 205.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 205.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\t1ptm.fd"
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-LaTeX Info: Redefining \microtypecontext on input line 167.
+LaTeX Info: Redefining \microtypecontext on input line 205.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -1041,14 +1042,14 @@ G,.JBIG2,.JB2,.eps]
 )
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 167.
+less on input line 205.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 167.
+less on input line 205.
 
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 167.
+Package hyperref Info: Link coloring OFF on input line 205.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
 "
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1059,9 +1060,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count133
 )
-LaTeX Info: Redefining \ref on input line 167.
-LaTeX Info: Redefining \pageref on input line 167.
-LaTeX Info: Redefining \nameref on input line 167.
+LaTeX Info: Redefining \ref on input line 205.
+LaTeX Info: Redefining \pageref on input line 205.
+LaTeX Info: Redefining \nameref on input line 205.
 (UChicago-MScA-Capstone.out) (UChicago-MScA-Capstone.out)
 \@outlinefile=\write4
 \openout4 = `UChicago-MScA-Capstone.out'.
@@ -1069,35 +1070,35 @@ LaTeX Info: Redefining \nameref on input line 167.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <18> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 171.
-LaTeX Font Info:    Calculating math sizes for size <14> on input line 171.
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 17
-1.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 209.
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 209.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 20
+9.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ztmcm.fd"
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 17
-1.
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 20
+9.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omlztmcm.fd"
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 17
-1.
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 20
+9.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omsztmcm.fd"
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 17
-1.
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 20
+9.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omxztmcm.fd"
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 171.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 209.
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.40009> not available
-(Font)              size <8> substituted on input line 171.
+(Font)              size <8> substituted on input line 209.
 
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg
 "
@@ -1106,17 +1107,17 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 fg"
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 171.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 209.
 
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 209.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.36008> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 209.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8.40009> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 209.
 [1
 Non-PDF special ignored!
 <special> !% University of Chicago Graham MScA 2018/10/18
@@ -1129,12 +1130,12 @@ Non-PDF special ignored!
 sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.172 \frontmatter
+l.210 \frontmatter
                    % this stuff will be roman-numbered [1]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 177.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 215.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 193.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 233.
 [1
 
 
@@ -1170,237 +1171,252 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 ] [7
 
 ]
-Chapter 1.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 249.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 264.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 301.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 \chapter
-              *{Background}\label{background} [1
+l.327 O
+       ur research objectives include: * Develop a methodology to determine [1
 
 
 
 ]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 276.
-
-[2
-
-] [3
-
-]
-<UChicago-MScA-Capstone_files/figure-latex/Quantity_Histogram-1.pdf, id=323, 43
-3.62pt x 325.215pt>
-File: UChicago-MScA-Capstone_files/figure-latex/Quantity_Histogram-1.pdf Graphi
-c file (type pdf)
-<use UChicago-MScA-Capstone_files/figure-latex/Quantity_Histogram-1.pdf>
-Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/Quantity_His
-togram-1.pdf  used on input line 342.
-(pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
-<UChicago-MScA-Capstone_files/figure-latex/Quantity_Time-1.pdf, id=324, 433.62p
-t x 325.215pt>
-File: UChicago-MScA-Capstone_files/figure-latex/Quantity_Time-1.pdf Graphic fil
-e (type pdf)
-<use UChicago-MScA-Capstone_files/figure-latex/Quantity_Time-1.pdf>
-Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/Quantity_Tim
-e-1.pdf  used on input line 354.
-(pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
-[4
-
- <./UChicago-MScA-Capstone_files/figure-latex/Quantity_Histogram-1.pdf>]
-<UChicago-MScA-Capstone_files/figure-latex/Quantity_Month-1.pdf, id=335, 433.62
-pt x 325.215pt>
-File: UChicago-MScA-Capstone_files/figure-latex/Quantity_Month-1.pdf Graphic fi
-le (type pdf)
-<use UChicago-MScA-Capstone_files/figure-latex/Quantity_Month-1.pdf>
-Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/Quantity_Mon
-th-1.pdf  used on input line 366.
-(pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 14.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[5 <./UChicago-MScA-Capstone_files/figure-latex/Quantity_Time-1.pdf>]
-<UChicago-MScA-Capstone_files/figure-latex/IN_cumulative-1.pdf, id=345, 433.62p
-t x 325.215pt>
-File: UChicago-MScA-Capstone_files/figure-latex/IN_cumulative-1.pdf Graphic fil
-e (type pdf)
-<use UChicago-MScA-Capstone_files/figure-latex/IN_cumulative-1.pdf>
-Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/IN_cumulativ
-e-1.pdf  used on input line 374.
-(pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
+[2] [3
 
-Overfull \hbox (114.14896pt too wide) in paragraph at lines 371--375
-\T1/ptm/m/n/12 (-20) 60 item num-bers. [] 
- []
-
-[6 <./UChicago-MScA-Capstone_files/figure-latex/Quantity_Month-1.pdf>]
-<UChicago-MScA-Capstone_files/figure-latex/BP_Cumulative-1.pdf, id=355, 433.62p
-t x 325.215pt>
-File: UChicago-MScA-Capstone_files/figure-latex/BP_Cumulative-1.pdf Graphic fil
-e (type pdf)
-<use UChicago-MScA-Capstone_files/figure-latex/BP_Cumulative-1.pdf>
-Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/BP_Cumulativ
-e-1.pdf  used on input line 384.
+]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 365.
+<UChicago-MScA-Capstone_files/figure-latex/Quantity-Histogram-1.pdf, id=244, 43
+3.62pt x 325.215pt>
+File: UChicago-MScA-Capstone_files/figure-latex/Quantity-Histogram-1.pdf Graphi
+c file (type pdf)
+<use UChicago-MScA-Capstone_files/figure-latex/Quantity-Histogram-1.pdf>
+Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/Quantity-His
+togram-1.pdf  used on input line 402.
 (pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
-[7 <./UChicago-MScA-Capstone_files/figure-latex/IN_cumulative-1.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 403.
+[4
+
+]
+<UChicago-MScA-Capstone_files/figure-latex/Quantity-Time-1.pdf, id=251, 433.62p
+t x 325.215pt>
+File: UChicago-MScA-Capstone_files/figure-latex/Quantity-Time-1.pdf Graphic fil
+e (type pdf)
+<use UChicago-MScA-Capstone_files/figure-latex/Quantity-Time-1.pdf>
+Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/Quantity-Tim
+e-1.pdf  used on input line 415.
+(pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
+[5 <./UChicago-MScA-Capstone_files/figure-latex/Quantity-Histogram-1.pdf>]
+<UChicago-MScA-Capstone_files/figure-latex/Quantity-Month-1.pdf, id=262, 433.62
+pt x 325.215pt>
+File: UChicago-MScA-Capstone_files/figure-latex/Quantity-Month-1.pdf Graphic fi
+le (type pdf)
+<use UChicago-MScA-Capstone_files/figure-latex/Quantity-Month-1.pdf>
+Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/Quantity-Mon
+th-1.pdf  used on input line 425.
+(pdftex.def)             Requested size: 433.61894pt x 325.2142pt.
+[6 <./UChicago-MScA-Capstone_files/figure-latex/Quantity-Time-1.pdf>]
+<UChicago-MScA-Capstone_files/figure-latex/IN-cumulative-1.pdf, id=272, 361.35p
+t x 325.215pt>
+File: UChicago-MScA-Capstone_files/figure-latex/IN-cumulative-1.pdf Graphic fil
+e (type pdf)
+<use UChicago-MScA-Capstone_files/figure-latex/IN-cumulative-1.pdf>
+Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/IN-cumulativ
+e-1.pdf  used on input line 440.
+(pdftex.def)             Requested size: 361.34912pt x 325.2142pt.
+<UChicago-MScA-Capstone_files/figure-latex/IN-time-1.pdf, id=273, 361.35pt x 32
+5.215pt>
+File: UChicago-MScA-Capstone_files/figure-latex/IN-time-1.pdf Graphic file (typ
+e pdf)
+<use UChicago-MScA-Capstone_files/figure-latex/IN-time-1.pdf>
+Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/IN-time-1.pd
+f  used on input line 445.
+(pdftex.def)             Requested size: 361.34912pt x 325.2142pt.
+[7 <./UChicago-MScA-Capstone_files/figure-latex/Quantity-Month-1.pdf>] [8 <./UC
+hicago-MScA-Capstone_files/figure-latex/IN-cumulative-1.pdf>] [9 <./UChicago-MS
+cA-Capstone_files/figure-latex/IN-time-1.pdf>]
+
+LaTeX Warning: Reference `tab:External-Data' on page 10 undefined on input line
+ 485.
+
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 506.
+
+("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [10]
+
+LaTeX Warning: Reference `tab:Keywords' on page 11 undefined on input line 543.
+
+
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 544.
 
 ("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 405
-.
-("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [8 <./UChicago-MScA-Capstone_files/figure-latex/BP_Cumulative-1.pdf>] [9]
-<./figure/CCF_Results_Google.png, id=381, 409.53pt x 334.24875pt>
-File: ./figure/CCF_Results_Google.png Graphic file (type png)
-<use ./figure/CCF_Results_Google.png>
-Package pdftex.def Info: ./figure/CCF_Results_Google.png  used on input line 48
-7.
-(pdftex.def)             Requested size: 409.52899pt x 334.24792pt.
-[10 <./figure/CCF_Results_Google.png (PNG copy)>]
-<./figure/Keyword_Distance_Spacy.png, id=388, 433.62pt x 433.62pt>
-File: ./figure/Keyword_Distance_Spacy.png Graphic file (type png)
-<use ./figure/Keyword_Distance_Spacy.png>
-Package pdftex.def Info: ./figure/Keyword_Distance_Spacy.png  used on input lin
-e 542.
-(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
+Underfull \vbox (badness 10000) detected at line 553
+ []
+
+<figure/CCF_Google_Results.png, id=309, 502.12593pt x 332.74312pt>
+File: figure/CCF_Google_Results.png Graphic file (type png)
+<use figure/CCF_Google_Results.png>
+Package pdftex.def Info: figure/CCF_Google_Results.png  used on input line 578.
+
+(pdftex.def)             Requested size: 401.50146pt x 266.07806pt.
 [11]
-<./figure/Tweet_Distance_Spacy.png, id=394, 433.62pt x 433.62pt>
-File: ./figure/Tweet_Distance_Spacy.png Graphic file (type png)
-<use ./figure/Tweet_Distance_Spacy.png>
-Package pdftex.def Info: ./figure/Tweet_Distance_Spacy.png  used on input line 
-555.
-(pdftex.def)             Requested size: 433.61894pt x 433.61894pt.
-[12 <./figure/Keyword_Distance_Spacy.png>]
-<./figure/Tweet_Polarity.png, id=400, 433.62pt x 289.08pt>
-File: ./figure/Tweet_Polarity.png Graphic file (type png)
-<use ./figure/Tweet_Polarity.png>
-Package pdftex.def Info: ./figure/Tweet_Polarity.png  used on input line 577.
-(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
-[13 <./figure/Tweet_Distance_Spacy.png>]
-<./figure/Tweet_Subjectivity.png, id=406, 433.62pt x 289.08pt>
-File: ./figure/Tweet_Subjectivity.png Graphic file (type png)
-<use ./figure/Tweet_Subjectivity.png>
-Package pdftex.def Info: ./figure/Tweet_Subjectivity.png  used on input line 58
-2.
-(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
-<./figure/Tweet_Distribution.png, id=407, 578.16pt x 578.16pt>
-File: ./figure/Tweet_Distribution.png Graphic file (type png)
-<use ./figure/Tweet_Distribution.png>
-Package pdftex.def Info: ./figure/Tweet_Distribution.png  used on input line 58
-7.
-(pdftex.def)             Requested size: 578.15858pt x 578.15858pt.
 
-Overfull \hbox (144.53859pt too wide) in paragraph at lines 587--588
- [][] 
- []
+LaTeX Warning: Reference `tab:Lags-Google' on page 12 undefined on input line 5
+94.
 
-[14 <./figure/Tweet_Polarity.png>] [15 <./figure/Tweet_Subjectivity.png>]
-<./figure/CCF_Twitter_Results.png, id=418, 409.53pt x 334.24875pt>
-File: ./figure/CCF_Twitter_Results.png Graphic file (type png)
-<use ./figure/CCF_Twitter_Results.png>
-Package pdftex.def Info: ./figure/CCF_Twitter_Results.png  used on input line 6
-02.
-(pdftex.def)             Requested size: 409.52899pt x 334.24792pt.
-[16 <./figure/Tweet_Distribution.png>] [17 <./figure/CCF_Twitter_Results.png (P
-NG copy)>] [18]
-<./figure/Prophet_SMAPE_CV.png, id=439, 578.16pt x 433.62pt>
-File: ./figure/Prophet_SMAPE_CV.png Graphic file (type png)
-<use ./figure/Prophet_SMAPE_CV.png>
-Package pdftex.def Info: ./figure/Prophet_SMAPE_CV.png  used on input line 739.
+[12 <./figure/CCF_Google_Results.png (PNG copy)>]
+<figure/Keyword_Distance_Spacy.png, id=324, 433.62pt x 433.62pt>
+File: figure/Keyword_Distance_Spacy.png Graphic file (type png)
+<use figure/Keyword_Distance_Spacy.png>
+Package pdftex.def Info: figure/Keyword_Distance_Spacy.png  used on input line 
+653.
+(pdftex.def)             Requested size: 401.50146pt x 401.5223pt.
+[13]
+<figure/Tweet_Distance_Spacy.png, id=335, 433.62pt x 433.62pt>
+File: figure/Tweet_Distance_Spacy.png Graphic file (type png)
+<use figure/Tweet_Distance_Spacy.png>
+Package pdftex.def Info: figure/Tweet_Distance_Spacy.png  used on input line 66
+9.
+(pdftex.def)             Requested size: 401.50146pt x 401.5223pt.
+[14 <./figure/Keyword_Distance_Spacy.png>]
+<figure/Tweet_Polarity.png, id=341, 433.62pt x 289.08pt>
+File: figure/Tweet_Polarity.png Graphic file (type png)
+<use figure/Tweet_Polarity.png>
+Package pdftex.def Info: figure/Tweet_Polarity.png  used on input line 694.
+(pdftex.def)             Requested size: 401.50146pt x 267.68152pt.
+<figure/Tweet_Subjectivity.png, id=342, 433.62pt x 289.08pt>
+File: figure/Tweet_Subjectivity.png Graphic file (type png)
+<use figure/Tweet_Subjectivity.png>
+Package pdftex.def Info: figure/Tweet_Subjectivity.png  used on input line 702.
 
-(pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
+(pdftex.def)             Requested size: 401.50146pt x 267.68152pt.
+[15 <./figure/Tweet_Distance_Spacy.png>]
+<figure/Tweet_Distribution.png, id=348, 578.16pt x 578.16pt>
+File: figure/Tweet_Distribution.png Graphic file (type png)
+<use figure/Tweet_Distribution.png>
+Package pdftex.def Info: figure/Tweet_Distribution.png  used on input line 710.
 
-Overfull \hbox (144.53859pt too wide) in paragraph at lines 739--740
- [][] 
- []
+(pdftex.def)             Requested size: 401.50146pt x 401.49803pt.
+[16 <./figure/Tweet_Polarity.png> <./figure/Tweet_Subjectivity.png>]
+<figure/CCF_Twitter_Results.png, id=356, 409.53pt x 334.24875pt>
+File: figure/CCF_Twitter_Results.png Graphic file (type png)
+<use figure/CCF_Twitter_Results.png>
+Package pdftex.def Info: figure/CCF_Twitter_Results.png  used on input line 728
+.
+(pdftex.def)             Requested size: 401.50146pt x 327.71454pt.
+[17 <./figure/Tweet_Distribution.png>] [18 <./figure/CCF_Twitter_Results.png (P
+NG copy)>] [19] [20]
+<figure/Prophet_SMAPE_CV.png, id=381, 578.16pt x 433.62pt>
+File: figure/Prophet_SMAPE_CV.png Graphic file (type png)
+<use figure/Prophet_SMAPE_CV.png>
+Package pdftex.def Info: figure/Prophet_SMAPE_CV.png  used on input line 876.
+(pdftex.def)             Requested size: 401.50146pt x 301.12352pt.
+<figure/Prophet_RMSE_CV.png, id=382, 578.16pt x 433.62pt>
+File: figure/Prophet_RMSE_CV.png Graphic file (type png)
+<use figure/Prophet_RMSE_CV.png>
+Package pdftex.def Info: figure/Prophet_RMSE_CV.png  used on input line 884.
+(pdftex.def)             Requested size: 401.50146pt x 301.12352pt.
+[21
 
-<./figure/Prophet_RMSE_CV.png, id=440, 578.16pt x 433.62pt>
-File: ./figure/Prophet_RMSE_CV.png Graphic file (type png)
-<use ./figure/Prophet_RMSE_CV.png>
-Package pdftex.def Info: ./figure/Prophet_RMSE_CV.png  used on input line 744.
-(pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
-
-Overfull \hbox (144.53859pt too wide) in paragraph at lines 744--745
- [][] 
- []
-
-[19] [20 <./figure/Prophet_SMAPE_CV.png>] [21 <./figure/Prophet_RMSE_CV.png>]
-<./figure/Arima_12month.png, id=455, 578.16pt x 433.62pt>
-File: ./figure/Arima_12month.png Graphic file (type png)
-<use ./figure/Arima_12month.png>
-Package pdftex.def Info: ./figure/Arima_12month.png  used on input line 795.
-(pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
-
-Overfull \hbox (144.53859pt too wide) in paragraph at lines 795--796
- [][] 
- []
-
-<./figure/HarvestArima.png, id=456, 578.16pt x 433.62pt>
-File: ./figure/HarvestArima.png Graphic file (type png)
-<use ./figure/HarvestArima.png>
-Package pdftex.def Info: ./figure/HarvestArima.png  used on input line 800.
-(pdftex.def)             Requested size: 578.15858pt x 433.61894pt.
-
-Overfull \hbox (144.53859pt too wide) in paragraph at lines 800--801
- [][] 
- []
-
-[22] [23 <./figure/Arima_12month.png>] [24 <./figure/HarvestArima.png>] [25]
-<./figure/RF_V_Imp.png, id=481, 396.7322pt x 254.45062pt>
+] [22 <./figure/Prophet_SMAPE_CV.png>] [23 <./figure/Prophet_RMSE_CV.png>]
+<figure/Arima_12month.png, id=399, 578.16pt x 433.62pt>
+File: figure/Arima_12month.png Graphic file (type png)
+<use figure/Arima_12month.png>
+Package pdftex.def Info: figure/Arima_12month.png  used on input line 938.
+(pdftex.def)             Requested size: 401.50146pt x 301.12352pt.
+<figure/HarvestArima.png, id=400, 578.16pt x 433.62pt>
+File: figure/HarvestArima.png Graphic file (type png)
+<use figure/HarvestArima.png>
+Package pdftex.def Info: figure/HarvestArima.png  used on input line 946.
+(pdftex.def)             Requested size: 401.50146pt x 301.12352pt.
+[24 <./figure/Arima_12month.png>] [25 <./figure/HarvestArima.png>] [26]
+<./figure/RF_V_Imp.png, id=419, 396.7322pt x 254.45062pt>
 File: ./figure/RF_V_Imp.png Graphic file (type png)
 <use ./figure/RF_V_Imp.png>
-Package pdftex.def Info: ./figure/RF_V_Imp.png  used on input line 916.
+Package pdftex.def Info: ./figure/RF_V_Imp.png  used on input line 1074.
 (pdftex.def)             Requested size: 396.73122pt x 254.45pt.
-[26] [27 <./figure/RF_V_Imp.png>] [28] [29
+[27] [28 <./figure/RF_V_Imp.png>] [29]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 1198.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 119
+8.
+("C:\Users\Bob\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+<UChicago-MScA-Capstone_files/figure-latex/unnamed-chunk-3-1.pdf, id=438, 469.7
+55pt x 325.215pt>
+File: UChicago-MScA-Capstone_files/figure-latex/unnamed-chunk-3-1.pdf Graphic f
+ile (type pdf)
+<use UChicago-MScA-Capstone_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: UChicago-MScA-Capstone_files/figure-latex/unnamed-chun
+k-3-1.pdf  used on input line 1203.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-] [30
+Overfull \hbox (66.13387pt too wide) in paragraph at lines 1203--1204
+[][] 
+ []
+
+[30] [31 <./UChicago-MScA-Capstone_files/figure-latex/unnamed-chunk-3-1.pdf>] [
+32] [33
+
+] [34
 
 ]
 Appendix A.
-[31
+
+LaTeX Warning: Reference `pressure-plot' on page 35 undefined on input line 126
+6.
+
+
+LaTeX Warning: Reference `ref-labels' on page 35 undefined on input line 1268.
+
+[35
 
 ]
 Appendix B.
-[32
+[36
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1028.
-[33
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1341.
+[37
+
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1028.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1341.
 (UChicago-MScA-Capstone.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1028.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1028.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1341.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1341.
 
 Package rerunfilecheck Info: File `UChicago-MScA-Capstone.out' has not changed.
 
-(rerunfilecheck)             Checksum: D67FFC36A3E3572CC0B27D22FCD61714;3301.
+(rerunfilecheck)             Checksum: 6EFD8E6847864ADC6353C751A76FCC5E;2019.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.40009pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1028.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1341.
  ) 
 Here is how much of TeX's memory you used:
- 11293 strings out of 493305
- 175649 string characters out of 3130672
- 283777 words of memory out of 3000000
- 14340 multiletter control sequences out of 15000+200000
- 67446 words of font info for 195 fonts, out of 3000000 for 9000
+ 11383 strings out of 493305
+ 176719 string characters out of 3130672
+ 289015 words of memory out of 3000000
+ 14400 multiletter control sequences out of 15000+200000
+ 69033 words of font info for 207 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,12n,45p,281b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,12n,45p,303b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Bob/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc
 }{C:/Users/Bob/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{
 C:/Users/Bob/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/
@@ -1409,14 +1425,16 @@ Users/Bob/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex
 nts/cm/cmmi10.pfb><C:/Users/Bob/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr10.pfb><C:/Users/Bob/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bob/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Users/Bob/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Bob/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Bob/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Bob/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on UChicago-MScA-Capstone.pdf (42 pages, 559148 bytes).
+TeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Bob/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Users/Bob/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Users/Bob/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Bob/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Bob/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Bob/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on UChicago-MScA-Capstone.pdf (46 pages, 627241 bytes).
 PDF statistics:
- 582 PDF objects out of 1000 (max. 8388607)
- 119 named destinations out of 1000 (max. 500000)
- 14790 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 558 PDF objects out of 1000 (max. 8388607)
+ 128 named destinations out of 1000 (max. 500000)
+ 14667 words of extra memory for PDF output out of 17280 (max. 10000000)
 

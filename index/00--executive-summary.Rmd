@@ -2,9 +2,9 @@
 
 **METHODS:** We used natural language processing and time-series analysis to forecast tomato bag shipments.
 
-**RESULTS:** We found models that leveraged...
+**RESULTS:** We were able to generate a model that performed better than the baseline model of tomato bag shipments.
 
-**CONCLUSIONS:**We were able to ...
+**CONCLUSIONS:** There is some predictive power generated from social media data with respect to tomato bag shipments.
 
 \bigskip
 \bigskip

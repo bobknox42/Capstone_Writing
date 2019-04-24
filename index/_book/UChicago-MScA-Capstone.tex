@@ -55,11 +55,51 @@
 % End of add by JMS
 
 % Syntax highlighting #22
+  \usepackage{color}
+  \usepackage{fancyvrb}
+  \newcommand{\VerbBar}{|}
+  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+  % Add ',fontsize=\small' for more characters per line
+  \usepackage{framed}
+  \definecolor{shadecolor}{RGB}{248,248,248}
+  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\ImportTok}[1]{#1}
+  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+  \newcommand{\BuiltInTok}[1]{#1}
+  \newcommand{\ExtensionTok}[1]{#1}
+  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+  \newcommand{\RegionMarkerTok}[1]{#1}
+  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+  \newcommand{\NormalTok}[1]{#1}
 
 % To pass between YAML and LaTeX the dollar signs are added by CII
-\title{Your Capstone Project Title}
+\title{Forecasting Bag Shipments Using Social Media Trends}
 \author{Robert Knox, Adetola Adedeji, Xiaolei Zhang}
-\date{Month, Year} % The month and year that you submit your FINAL draft)
+\date{June, 2019} % The month and year that you submit your FINAL draft)
 \division{Graham School}
 \advisor{Arnab Bose}
 \institution{University of Chicago}
@@ -99,21 +139,23 @@
 \Abstract{
 Abstract
 
-Our research focus was on improving the forecast of tomato/bag sales for
-a company named Scholle by using social media conversation. We received
-Sales data from Scholle spanning period of 2010 to 2018.Lagged social
-media data sourced from Twitter and Google Trends was regressed on
-Scholle data using various time series model. Random Forest Model was
-found to be the most successful in predicting the Tomato bags Sales.
-From this study, we developed a set of analytical models when applied by
-Scholle improved the prediction of Tomato bag sales using social media
-data.
+Our research was to find exogenous variables derived from social media
+data in order to improve the forecasts of Scholle IPN's tomato bag
+shipments on a monthly basis. We leveraged two data sources to help
+forecast shipments, Google Trends and Twitter. Google Trends data
+collected the relative frequency of certain keyword searches over the
+research period of 2007 to 2018. Twitter data collected tweets
+containing keywords over the research period of 2007 to 2018. These
+tweets were then processed using open-source natural language processing
+libraries to determine the tweet's sentimentality of positive or
+negative. Several models were created, validated and ensembled to
+produce the best model to forecast tomato bag shipments.
 
 \bigskip  \bigskip
 \bigskip
 
-\textbf{Keywords}: Forecast, Social media data, Regression, Scholle
-data, time series model, Random Forest Model
+\textbf{Keywords}: Forecast, Shipment, Social Media, Regression, Time
+Series, Random Forest, XGBoost,Ensemble Model.
 
 \bigskip  \bigskip
 \bigskip
@@ -121,24 +163,20 @@ data, time series model, Random Forest Model
 
 % Added by JMS
 \Executive{
-The executive summary is a maximum one page, double spaced summary of
-your report aimed at informing someone, who does not read the entire
-report, about your project. The executive summary is an extended version
-of the abstract with more space allocated to the key findings of the
-project and the conclusions and recommendations. You may want to write
-this section after writing the report.
+\textbf{OBJECTIVE:} Our research was to find exogenous variables derived
+from social media data in order to improve the forecasts of Scholle
+IPN's tomato bag shipments on a monthly basis.
 
-Second Paragraph.
+\textbf{METHODS:} We used natural language processing and time-series
+analysis to forecast tomato bag shipments.
 
-Third Paragraph.
+\textbf{RESULTS:} We found models that leveraged\ldots{}
+
+\textbf{CONCLUSIONS:}We were able to \ldots{}
 
 \bigskip
 \bigskip
 \bigskip
-**NOTE:** Like the abstract, do not use ``\#'' or ``\#\#'' symbols to
-start new sections in the executive summary section. Doing so will
-result in generating a table table of contents entry \emph{prior} to the
-Introduction, which is not desirable.
 }
 % End of JMS add
 
@@ -177,45 +215,43 @@ index.Rmd file.
   \begin{abstract}
     Abstract
     
-    Our research focus was on improving the forecast of tomato/bag sales for
-    a company named Scholle by using social media conversation. We received
-    Sales data from Scholle spanning period of 2010 to 2018.Lagged social
-    media data sourced from Twitter and Google Trends was regressed on
-    Scholle data using various time series model. Random Forest Model was
-    found to be the most successful in predicting the Tomato bags Sales.
-    From this study, we developed a set of analytical models when applied by
-    Scholle improved the prediction of Tomato bag sales using social media
-    data.
+    Our research was to find exogenous variables derived from social media
+    data in order to improve the forecasts of Scholle IPN's tomato bag
+    shipments on a monthly basis. We leveraged two data sources to help
+    forecast shipments, Google Trends and Twitter. Google Trends data
+    collected the relative frequency of certain keyword searches over the
+    research period of 2007 to 2018. Twitter data collected tweets
+    containing keywords over the research period of 2007 to 2018. These
+    tweets were then processed using open-source natural language processing
+    libraries to determine the tweet's sentimentality of positive or
+    negative. Several models were created, validated and ensembled to
+    produce the best model to forecast tomato bag shipments.
     
     \bigskip  \bigskip
     \bigskip
     
-    \textbf{Keywords}: Forecast, Social media data, Regression, Scholle
-    data, time series model, Random Forest Model
+    \textbf{Keywords}: Forecast, Shipment, Social Media, Regression, Time
+    Series, Random Forest, XGBoost,Ensemble Model.
     
     \bigskip  \bigskip
     \bigskip
   \end{abstract}
  % Added by JMS
   \begin{executive}
-    The executive summary is a maximum one page, double spaced summary of
-    your report aimed at informing someone, who does not read the entire
-    report, about your project. The executive summary is an extended version
-    of the abstract with more space allocated to the key findings of the
-    project and the conclusions and recommendations. You may want to write
-    this section after writing the report.
+    \textbf{OBJECTIVE:} Our research was to find exogenous variables derived
+    from social media data in order to improve the forecasts of Scholle
+    IPN's tomato bag shipments on a monthly basis.
     
-    Second Paragraph.
+    \textbf{METHODS:} We used natural language processing and time-series
+    analysis to forecast tomato bag shipments.
     
-    Third Paragraph.
+    \textbf{RESULTS:} We found models that leveraged\ldots{}
+    
+    \textbf{CONCLUSIONS:}We were able to \ldots{}
     
     \bigskip
     \bigskip
     \bigskip
-    **NOTE:** Like the abstract, do not use ``\#'' or ``\#\#'' symbols to
-    start new sections in the executive summary section. Doing so will
-    result in generating a table table of contents entry \emph{prior} to the
-    Introduction, which is not desirable.
   \end{executive}
  % End of JMS
 
@@ -241,174 +277,201 @@ index.Rmd file.
 \mainmatter % here the regular arabic numbering starts
 \pagestyle{fancyplain} % turns page numbering back on
 
-\chapter{phoenixdown::capstone\_gitbook:
-default}\label{phoenixdowncapstone_gitbook-default}
+\chapter*{Introduction}\label{introduction}
+\addcontentsline{toc}{chapter}{Introduction}
 
-Placeholder
+Founded in 1945, Scholle IPN Corporation (Scholle) is a pioneer in the
+bag-in-box technology. The company uses to package and dispense a
+variety of consumer products, from food, beverages to non-food markets
+such as agricultural chemicals and liquid cleaning products. Scholle
+mainly produces bag-in-box, pouch packaging, and packaging components
+like caps, pumps and connectors. Some of Scholle's competitors in the
+industry are DuPont Liquid Packaging Systems, Sonoco Products Company
+and Survitec Group Limited. As a industry-leader, Scholle is constantly
+providing products in a safe, economic and sustainable way to customers
+globally.
 
-\section*{Problem Statement}\label{problem-statement}
+One of the company's primary markets is bags for processed-tomato
+products, such as salsa, tomato paste and ketchup. Every year, the
+company forecasts the demand for bags for these products, but the
+accuracy of the prediction is low because the current forecasting
+methods only considers the quantity of bags shipped in the previous
+year.
+
+\section*{Problem Statement}\label{problem_statement}
 \addcontentsline{toc}{section}{Problem Statement}
 
-\section*{Research Purpose}\label{research-purpose}
+Scholle needs a more accurate method to forecast its bag shipments. One
+of the company's primary markets is packages for processed-tomato
+products, such as salsa, tomato paste and ketchup. Every year, the
+company forecasts the demand for bags for these products, but the
+accuracy of the prediction is low because the current forecasting method
+only considers the quantity of bags shipped in the previous year. Social
+media is changing the world. It provides companies with feedback on
+customer conversations about their products and services, and can affect
+demand for their products. Currently, this potentially rich data set is
+not factored in the forecasting of tomato bag shipments. Scholle
+Management believes there is a relationship between social media
+feedback and the quantity of tomato bags shipped. Scholle hopes to
+improve their tomato bag inventory management, level of stock turnover
+and fulfill the demand more accurately by incorporating these data into
+their predictive models.
+
+\section*{Research Purpose}\label{research_purpose}
 \addcontentsline{toc}{section}{Research Purpose}
 
-\section*{Variables and Scope}\label{variables-and-scope}
-\addcontentsline{toc}{section}{Variables and Scope}
+The purpose of this research is to forecast tomato bag shipments using
+social media data about certain keywords associated to process tomato
+products.
 
-\section*{Writing Tips}\label{writing-tips}
-\addcontentsline{toc}{section}{Writing Tips}
+Our research objectives include: * Develop a methodology to determine
+the positive or negative sentiment associated to a specific product. *
+Investigate several data sets to find significant cross-correlation with
+Scholle data. *
 
-\section*{R Markdown Basics}\label{rmd-basics}
-\addcontentsline{toc}{section}{R Markdown Basics}
+\section*{Variables \& Scope}\label{variables_scope}
+\addcontentsline{toc}{section}{Variables \& Scope}
 
-\subsection*{Lists}\label{lists}
-\addcontentsline{toc}{subsection}{Lists}
-
-\subsection*{Line breaks}\label{line-breaks}
-\addcontentsline{toc}{subsection}{Line breaks}
+The key dependent variable we will investigate will be the monthly
+aggregated shipment quantity of tomato bags. These will be limited to
+the bags sold in the United States. Our independent variables will be
+derived from Google Trends and Twitter data generated by users in the
+United States.
 
 \chapter*{Background}\label{background}
 \addcontentsline{toc}{chapter}{Background}
 
-Placeholder
+Social Media is changing the world. It provides companies feedback on
+customer conversations of their products and services, and can affect
+demand for their products. Currently, this important metric is not
+factored in the forecasting of tomato bag sales.
 
-\subsection*{Code chunks}\label{code-chunks}
-\addcontentsline{toc}{subsection}{Code chunks}
+Scholle Management believes there is a relationship between social media
+feedback and quantity of tomato bags sold year. Scholle hopes to improve
+their tomato bag inventory management, level of stock turnover and
+fulfill the demand more accurately.
 
-\subsection*{Linked tables and List of
-Tables}\label{linked-tables-and-list-of-tables}
-\addcontentsline{toc}{subsection}{Linked tables and List of Tables}
-
-\subsection*{More than R: Other
-Languages}\label{more-than-r-other-languages}
-\addcontentsline{toc}{subsection}{More than R: Other Languages}
-
-\subsection*{Including plots}\label{pressure-plot}
-\addcontentsline{toc}{subsection}{Including plots}
-
-\subsection*{R Markdown Tables, Graphics, References, and
-Labels}\label{ref-labels}
-\addcontentsline{toc}{subsection}{R Markdown Tables, Graphics,
-References, and Labels}
-
-\subsection*{Inline code}\label{inline-code}
-\addcontentsline{toc}{subsection}{Inline code}
-
-\subsection*{Figures}\label{figures}
-\addcontentsline{toc}{subsection}{Figures}
-
-\subsection*{Footnotes and Endnotes}\label{footnotes-and-endnotes}
-\addcontentsline{toc}{subsection}{Footnotes and Endnotes}
+This project collected, analyzed and generated solutions on how social
+media conversation correlate with the demand for processed tomato
+products and factors those findings into the prediction of tomato bag
+shipments.
 
 \chapter*{Methodology}\label{methodology}
 \addcontentsline{toc}{chapter}{Methodology}
 
-Placeholder
-
 \section*{Data}\label{methodology-data}
 \addcontentsline{toc}{section}{Data}
+
+\subsection*{Scholle Data}\label{methodology-scholle}
+\addcontentsline{toc}{subsection}{Scholle Data}
+
+Scholle provided a data file in the form of an excel document that
+included sales record data from 2010-2018. The following table describes
+the relevant columns from the data file.
+
+\textbf{INSERT TABLE OF SCHOLLE COLUMNS HERE.}
+
+Based on discussions with Scholle's management, we removed any sales
+transactions that were marked with a Quantity less than or equal to
+zero. This was due to the data being extracted from their sales system
+in which negative or zero quantity records were used to true up returns
+or modify existing order pricing which were not relevant to our
+analysis.
+
+\section*{Descriptive Analyses}\label{methodology-Descriptive-Analyses}
+\addcontentsline{toc}{section}{Descriptive Analyses}
+
+\subsection*{Exploratory Data Analysis}\label{methodology-EDA}
+\addcontentsline{toc}{subsection}{Exploratory Data Analysis}
+
+We began with exploratory data analysis to help understand the Scholle
+data and decide how to approach the problem of forecasting bag sales.
+Quantity is the primary focus as it describes the number of bag
+shipments.
+
+\subsubsection*{Distribution of
+Quantity}\label{methodology-EDA-Distr-Quantity}
+\addcontentsline{toc}{subsubsection}{Distribution of Quantity}
+
+Order quantity is typically less than 50,000 bags, with a few orders
+significantly higher. Specifically, most order quantities are less than
+30,000 bags. See \ref{fig:Quantity-Histogram} below for histogram of
+Quantity.
+\begin{figure}
+\centering
+\includegraphics{UChicago-MScA-Capstone_files/figure-latex/Quantity-Histogram-1.pdf}
+\caption{\label{fig:Quantity-Histogram}Histogram of Quantity}
+\end{figure}
+Quantity is not normally distributed but is instead heavily skewed left.
+Large quantity orders are atypical and could have significant impact on
+models.
+
+\subsubsection{Distribution of Quantity over time \{methodology-QvsT
+.unnumbered\}}\label{distribution-of-quantity-over-time-methodology-qvst-.unnumbered}
+
+The figure below plots the aggregated Quantity over time.
+\begin{figure}
+\centering
+\includegraphics{UChicago-MScA-Capstone_files/figure-latex/Quantity-Time-1.pdf}
+\caption{\label{fig:Quantity-Time}Quantity over Time}
+\end{figure}
+There is a large degree of seasonal behavior. Tomato bag shipments
+increase during summer time from June to August and begin to drop off in
+September and October. Quantity is very small during other months of the
+year. This seasonality is easier to observe in the chart below which
+aggregates bag shipments for each month of the year.
+\begin{figure}
+\centering
+\includegraphics{UChicago-MScA-Capstone_files/figure-latex/Quantity-Month-1.pdf}
+\caption{\label{fig:Quantity-Month}Monthy Quantity by Year}
+\end{figure}
+There is little year to year variation exhibited in each month, with the
+possible exception of June which increased from 2010 to 2015 and then
+decreased from 2016-2018.
+
+\subsubsection*{Quantity by Item Number}\label{methodology-IN}
+\addcontentsline{toc}{subsubsection}{Quantity by Item Number}
+
+In addition to exploring the shipment quantity by time, we also observed
+the effect that the Item Number on Quantity. Over 86\% of shipments are
+driven by the top 10 out of a total of 60 item numbers.
+\begin{figure}
+\centering
+\includegraphics{UChicago-MScA-Capstone_files/figure-latex/IN-cumulative-1.pdf}
+\caption{\label{fig:IN-cumulative}Cumulative Sales by Item Number}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics{UChicago-MScA-Capstone_files/figure-latex/IN-time-1.pdf}
+\caption{\label{fig:IN-time}Top 10 Item Number Quantity over Time}
+\end{figure}
+Quantity by Item Number does not greatly vary greatly from the
+aggregated Quantity. Because the seasonal nature of the data is so
+strong, we will consider the shipment quantity aggregated to the monthly
+level.
 
 \section*{Descriptive analyses}\label{methodology-descriptive}
 \addcontentsline{toc}{section}{Descriptive analyses}
 
-\section*{Modeling Framework}\label{methodology-modeling}
-\addcontentsline{toc}{section}{Modeling Framework}
+\subsection*{External Data Collection}\label{methodology-external-data}
+\addcontentsline{toc}{subsection}{External Data Collection}
 
-\section*{Math and Science notation}\label{math-sci}
-\addcontentsline{toc}{section}{Math and Science notation}
-
-\subsection*{Math Examples}\label{math-examples}
-\addcontentsline{toc}{subsection}{Math Examples}
-
-\subsection*{Additional R Markdown and bookdown
-resources}\label{additional-r-markdown-and-bookdown-resources}
-\addcontentsline{toc}{subsection}{Additional R Markdown and bookdown
-resources}
-
-\chapter*{Findings}\label{findings}
-\addcontentsline{toc}{chapter}{Findings}
-
-\section*{Results of descriptive analyses}\label{findings-descriptive}
-\addcontentsline{toc}{section}{Results of descriptive analyses}
-
-\subsection{Distribution of Quantity}\label{distribution-of-quantity}
-
-Order quantity is typically less than 50,000, with a few orders
-significantly higher. Specifically, most order quantity are less than
-30,000. See @ref(fig:Quantity\_Histogram) below for histogram on the
-quantity distribution.
-\begin{figure}
-\centering
-\includegraphics{UChicago-MScA-Capstone_files/figure-latex/Quantity_Histogram-1.pdf}
-\caption{(\#fig:Quantity\_Histogram)Histogram of Quantity}
-\end{figure}
-\subsection{Distribution of Quantity over
-time}\label{distribution-of-quantity-over-time}
-
-The figure below breaks down shipments over time. There is a large
-degree of seasonal behavior. Tomato bag sales increase during summer
-time from June to August and begin to drop off in September and October.
-Quantity is very small during other months of the year.
-\begin{figure}
-\centering
-\includegraphics{UChicago-MScA-Capstone_files/figure-latex/Quantity_Time-1.pdf}
-\caption{(\#fig:Quantity\_Time)Quantity over Time}
-\end{figure}
-\subsection{Distribution of Quantity over
-Time}\label{distribution-of-quantity-over-time-1}
-
-The figure below breaks down shipments over time. There is a large
-degree of seasonal behavior. Tomato bag sales increase during summer
-time from June to August and begin to drop off in September and October.
-Quantity is very small during other months of the year.
-\begin{figure}
-\centering
-\includegraphics{UChicago-MScA-Capstone_files/figure-latex/Quantity_Month-1.pdf}
-\caption{(\#fig:Quantity\_Month)Monthy Quantity by Year}
-\end{figure}
-\subsection{Quantity by Item Number}\label{quantity-by-item-number}
-
-In the figure below, total order quantity are aggregated by item number
-and then ordered by descending total quantity. Over 86\% of bag
-quantities are driven by the top 10 out of a total of 60 item numbers.
-\includegraphics{UChicago-MScA-Capstone_files/figure-latex/IN_cumulative-1.pdf}
-
-\subsection{Quantity by Top Business
-Partner}\label{quantity-by-top-business-partner}
-
-The figure below aggregates quantity by item number and then orders
-quantity descendingly. It suggests that over 93\% of bag quantities are
-driven by the top 10 out of the 23 top business partners.
-\begin{figure}
-\centering
-\includegraphics{UChicago-MScA-Capstone_files/figure-latex/BP_Cumulative-1.pdf}
-\caption{(\#fig:BP\_Cumulative)Cumulative Sales by Business Partner}
-\end{figure}
-\subsection{External Data Collection}\label{external-data-collection}
-
-We collected Social Media data from two sources: Twitter and the Google
-Trends. Google Trends summarised US monthly search statistics from 2004
-to 2019. The twitter data collected are of US users from 2007 to 2018.
+Google engine search and twitter are important and representative social
+media sources whose data is accessible. We collected social media data
+from two sources: Twitter and the Google Trends. Google Trends
+summarized US monthly search statistics from 2004 to 2019. The twitter
+data collected are of US users from 2007 to 2018.
 
 Google Trends returns a single value showing how frequently a given
 search term (e.g. `Tomato') goes in Google's search engine relative to
 its total search frequency for a given period.
 
 Twitter data were gathered by collecting relevant tweets from Twitter
-using key search words as shown in Table \_\_ below. We can grab a tweet
+using key search words as shown in Table tab below. We can grab a tweet
 based on defined keyword from Twitter by calling the Twitter API
 function. Subsequently, we can categorize opinions expressed in a piece
 of text, in order to determine opinion on our research (i.e, positive,
 negative, or neutral).
-\begin{verbatim}
-
-Attaching package: 'kableExtra'
-\end{verbatim}
-\begin{verbatim}
-The following object is masked from 'package:dplyr':
-
-    group_rows
-\end{verbatim}
 \begin{longtable}[]{@{}rrrrr@{}}
 \toprule
 External Data Source & Frequency Granularity & Range & Size & Data
@@ -419,9 +482,10 @@ Google Trend & Monthly & 2004-2019 & 182 & Numeric\tabularnewline
 Twitter & Monthly & 2007-2019 & & Text, Numeric\tabularnewline
 \bottomrule
 \end{longtable}
-Table \_\_ above shows the description of the social media dataset. The
-google trend dataset based on relative search frequency is on a monthly
-basis. The monthly dataset at the time of reporting has 182 rows.
+Table \ref{tab:External-Data} above shows the description of the social
+media dataset. The google trend dataset based on relative search
+frequency is on a monthly basis. The monthly dataset at the time of
+reporting has 182 rows.
 
 The Twitter data are sampled via a quasi-random approach that grabs data
 monthly over the entire period of 2007 - 2018. We had to employ this
@@ -434,32 +498,59 @@ could collect over the course of our data collection period (January
 collect tweets from each month of the year between January 2007 and
 March 2019.
 
-\textbf{Assumptions \& Limitation}
+\textbf{Assumptions \& Limitations}
 
-Google Trends Assumptions We limited the Google Trends search to the
-United States. The keywords are independent of each other.
-
-Limitation: The actual number of searches for the term being queried is
-not made available. Instead, the data are reported from 0-100, where 100
-represents the maximum relative search frequency.
-
-Resolution: Each term selected will be queried individually.
-
-\textbf{Twitter Datasets} Assumptions We limited Twitter data to the
-United States. The frequency of tweets we collected for each keyword
-will be independent of the time period in which we collected them.
-
-Limitations The demographic information of the twitter account user
-cannot be determined. With the limitation of our premium account API
-activity, we can only submit 100 requests to collect tweet per month.
-Per each request, we can get a maximum of 500 tweets back. The language
-associated with the Twitter account returned from the API does not
-guarantee the language of the Tweet. While we specified English language
-tweets, we received many tweets that were not in English. We
-subsequently dropped these tweets.
-
+\textbf{Google Trends} Assumptions:
+\begin{itemize}
+\item
+  We limited the Google Trends search to the United States.
+\item
+  The keywords are independent of each other.
+\end{itemize}
+Limitation:
+\begin{itemize}
+\tightlist
+\item
+  The actual number of searches for the term being queried is not made
+  available. Instead, the data are reported from 0-100, where 100
+  represents the maximum relative search frequency.
+\end{itemize}
+\textbf{Twitter Datasets} Assumptions:
+\begin{itemize}
+\item
+  We limited Twitter data to the United States.
+\item
+  The frequency of tweets we collected for each keyword will be
+  independent of the time period in which we collected them.
+\end{itemize}
+Limitations: * The demographic information of the twitter account user
+cannot be determined.
+\begin{itemize}
+\item
+  With the limitation of our premium account API activity, we can only
+  submit 100 requests to collect tweet per month. Per each request, we
+  can get a maximum of 500 tweets back.
+\item
+  The language associated with the Twitter account returned from the API
+  does not guarantee the language of the Tweet. While we specified
+  English language tweets, we received many tweets that were not in
+  English. We subsequently dropped these tweets.
+\end{itemize}
 \textbf{Plan for use}
 
+Working with Scholle, we developed a list of keywords to target in our
+social media data collection. The keywords are listed in Table
+\ref{tab:Keywords} below:
+\begin{verbatim}
+Warning in kable_markdown(x = structure(c("bbq", "chili", "ketchup",
+"pasta", : The table should have a header (column names)
+\end{verbatim}
+\begin{longtable}[]{@{}cccccccc@{}}
+\toprule
+bbq & chili & ketchup & pasta & pizza & salsa & spaghetti &
+tomato\tabularnewline
+\bottomrule
+\end{longtable}
 Twitter data We developed a sentiment index for all tweets using natural
 language processing techniques tilizing the textblob Library to analyze
 how similar or discrepant the meaning of tweets among each keyword
@@ -470,7 +561,7 @@ identify meaningful predictors
 
 Twitter Data
 
-We have collected tweets based on the keywords in Table 3 below. Tweets
+We have collected tweets based on the keywords in Table below. Tweets
 were aggregated on a monthly basis. The figure below shows how
 frequently the keywords appears in the returned tweets over time. Pizza
 is more frequently mentioned in Twitter than other keywords.
@@ -480,12 +571,15 @@ Google Trend Analysis
 We collected Google Trend data consisting the same keywords as we did in
 Tweet collection. The Google Trends data was standardized and
 subsequently the cross correlation was found with respect to the Scholle
-bag sales. Figure \_\_ displays the results of the cross correlation
-analysis.
+bag sales. Figure \ref{fig:ccf-google} displays the results of the cross
+correlation analysis.
 \begin{figure}
-\centering
-\includegraphics{./figure/CCF_Results_Google.png}
-\caption{CCF Google}
+
+{\centering \includegraphics[width=400px]{figure/CCF_Google_Results} 
+
+}
+
+\caption{CCF Google}\label{fig:ccf-google}
 \end{figure}
 \begin{longtable}[]{@{}rrrrrrrr@{}}
 \toprule
@@ -497,13 +591,14 @@ Lag 10 & Lag 15 & None & None & None & Lag 12 & None & Lag
 12\tabularnewline
 \bottomrule
 \end{longtable}
-In Table 4 above, we highlight cross-correlations greater than 0.5 and
-with a time period of greater than 8 months. Since the Scholle bag sales
-data are records of the demand are placed well in advance of the desired
-delivery date, we would expect a long lag window in order for the trends
-of social media to drive market forces that would affect demand. Red
-indicates positive relations and blue indicates negative correlations.
-The deeper the color, the greater its correlation with Scholle's data.
+In Table \ref{tab:Lags-Google} above, we highlight cross-correlations
+greater than 0.5 and with a time period of greater than 8 months. Since
+the Scholle bag sales data are records of the demand are placed well in
+advance of the desired delivery date, we would expect a long lag window
+in order for the trends of social media to drive market forces that
+would affect demand. Red indicates positive relations and blue indicates
+negative correlations. The deeper the color, the greater its correlation
+with Scholle's data.
 
 \subsection*{Tweet Sentiment Analysis}\label{tweet-sentiment-analysis}
 \addcontentsline{toc}{subsection}{Tweet Sentiment Analysis}
@@ -511,36 +606,55 @@ The deeper the color, the greater its correlation with Scholle's data.
 We have conducted the following steps to conduct the sentiment analysis
 of the tweets.
 
-\textbf{Text Cleanup Pipeline:} 1. Remove RT, URLs and non-text
-characters (except @ and punctuation symbols) 2. Handle mentions by
-replacing with upper case letters. 3. Remove all remaining non-text
-characters (including @ symbol and excluding punctuation symbols). 4.
-Check the language of the cleaned up tweet and drop any tweets that are
-not in English.
-
+\textbf{Text Cleanup Pipeline:}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Remove RT, URLs and non-text characters (except @ and punctuation
+  symbols)
+\item
+  Handle mentions by replacing with upper case letters.
+\item
+  Remove all remaining non-text characters (including @ symbol and
+  excluding punctuation symbols).
+\item
+  Check the language of the cleaned up tweet and drop any tweets that
+  are not in English.
+\end{enumerate}
 \textbf{SpaCy Pipeline:}
 
 We used the spaCy English Core Web Large model to analyze each tweet to
-process into three data sets: 1. Tokenization - each tweet was broken
-into its component elements of words, punctuation, etc. 2. Dependency
-Parsing - Annotate the tweet to add the syntactic dependency within the
-tweet i.e.~compare link verbs to their respective nouns. 3. Named
-Entities - Each tweet was analyzed to identify the named entities in the
-tweet. These entities will include the mentions because they were
-capitalized in the Text Cleanup Pipeline. 4. Removal of stop words - all
-stop words identified were removed.
-
+process into three data sets:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Tokenization - each tweet was broken into its component elements of
+  words, punctuation, etc.
+\item
+  Dependency Parsing - Annotate the tweet to add the syntactic
+  dependency within the tweet i.e.~compare link verbs to their
+  respective nouns.
+\item
+  Named Entities - Each tweet was analyzed to identify the named
+  entities in the tweet. These entities will include the mentions
+  because they were capitalized in the Text Cleanup Pipeline.
+\item
+  Removal of stop words - all stop words identified were removed.
+\end{enumerate}
 \textbf{Vector Extraction:}
 
 Spacy includes vector representations for individual words as well as
-entire entire sentences. See Figure 22 below for the Keyword Distance
-using Spacy.These are represented as 300 dimension Numpy arrays. To
-begin, we confirmed that were was a reasonable cosine distance measure
-between each of the keywords.
+entire entire sentences. See Figure below for the Keyword Distance using
+Spacy.These are represented as 300 dimension Numpy arrays. To begin, we
+confirmed that were was a reasonable cosine distance measure between
+each of the keywords.
 \begin{figure}
-\centering
-\includegraphics{./figure/Keyword_Distance_Spacy.png}
-\caption{Spacy Keyword Distance}
+
+{\centering \includegraphics[width=400px]{figure/Keyword_Distance_Spacy} 
+
+}
+
+\caption{Spacy Keyword Vector Distance}\label{fig:spacy-keyword}
 \end{figure}
 There is a reasonable distance between each of the keywords with the
 exception of bbq and barbecue but this is to be expected since they
@@ -551,9 +665,12 @@ each tweet keyword we summarised all vectors by finding their mean
 values for each dimension. We then found the pairwise distance measures
 for these `average' tweets. See in the figure below
 \begin{figure}
-\centering
-\includegraphics{./figure/Tweet_Distance_Spacy.png}
-\caption{Spacy Mean Vector Distance}
+
+{\centering \includegraphics[width=400px]{figure/Tweet_Distance_Spacy} 
+
+}
+
+\caption{Spacy Average Tweet Vector Distance}\label{fig:spacy-average}
 \end{figure}
 Here, the ``average'' tweets are rather similar to each other with the
 greatest distance from tomato to salsa.
@@ -573,19 +690,28 @@ subjectivity axis ranges from zero to positive one where 0 is very
 objective and 1 is very subjective. See Figure 25 below for the Tweet
 Subjectivity .
 \begin{figure}
-\centering
-\includegraphics{./figure/Tweet_Polarity.png}
-\caption{Tweet Polarity}
+
+{\centering \includegraphics[width=400px]{figure/Tweet_Polarity} 
+
+}
+
+\caption{Textblob Tweet Polarity}\label{fig:tweet-polarity}
 \end{figure}
 \begin{figure}
-\centering
-\includegraphics{./figure/Tweet_Subjectivity.png}
-\caption{Tweet Subjectivity}
+
+{\centering \includegraphics[width=400px]{figure/Tweet_Subjectivity} 
+
+}
+
+\caption{Textblob Tweet Subjectivity}\label{fig:tweet-subjectivity}
 \end{figure}
 \begin{figure}
-\centering
-\includegraphics{./figure/Tweet_Distribution.png}
-\caption{Tweet Distribution}
+
+{\centering \includegraphics[width=400px]{figure/Tweet_Distribution} 
+
+}
+
+\caption{Textblob Tweet Distribution}\label{fig:tweet-distribution}
 \end{figure}
 TextBlob categorizes the vast majority of tweets as non-subjective
 non-polar.
@@ -598,9 +724,12 @@ Scholle data and the sentiment monthly index for the overall sentiment
 and for each keyword was calculated and the results displayed in the
 figure below.
 \begin{figure}
-\centering
-\includegraphics{./figure/CCF_Twitter_Results.png}
-\caption{Twitter CCF}
+
+{\centering \includegraphics[width=400px]{figure/CCF_Twitter_Results} 
+
+}
+
+\caption{Twitter CCF Results}\label{fig:tweet-ccf}
 \end{figure}
 It is important to note the difference in scale relative to the Google
 Trends results; the correlations to the Twitter sentiment index are much
@@ -617,15 +746,18 @@ Lag 17 & None & None & Lag 18 & None & None & None & Lag
 15\tabularnewline
 \bottomrule
 \end{longtable}
-\subsection*{Model Selection Metrics}\label{model-selection-metrics}
+\section*{Modeling Framework}\label{methodology-modeling}
+\addcontentsline{toc}{section}{Modeling Framework}
+
+\subsection*{Model Selection
+Metrics}\label{methodology-ModelSelectionCriteria}
 \addcontentsline{toc}{subsection}{Model Selection Metrics}
 
-Selection of Metrics
-
-In order to determine the best model, we began by choosing selection
-metrics to test each model against. The following metrics outlined below
-will be used to measure the performance of each model. 1. SMAPE 2. RMSE
-3. \% bias -- no of time above forecast vs below. 4. Accuracy
+In order to determine the best model for predicting bag shipments, we
+began by choosing selection metrics to test each model. The following
+metrics outlined below will be used to measure the performance of each
+model. 1. SMAPE 2. RMSE 3. \% bias -- no of time above forecast vs
+below. 4. Accuracy
 
 \textbf{sMAPE -Symmetric Mean Absolute Percentage Error}
 
@@ -636,12 +768,12 @@ error independent of scale.
 \[sMAPE=\frac{100\%}{n}\frac{|A_t-F_t|}{(|A_t|+|F_t|)/2}\]
 
 sMAPE has a lower bound of 0\% and an upper bound of 100\%. The best
-value will be 0\% while the worst value will be 100\%.
+value is 0\% while the worst value is 100\%.
 
 The major limitation with sMAPE is that it gives more penalties to
 underestimates than overestimates.
 
-\textbf{RMSE- Root Mean Squared Error}
+\textbf{RMSE - Root Mean Squared Error}
 
 The root mean squared error (RMSE) of an estimator measures the average
 of the squares of the errors---that is, the average squared difference
@@ -691,6 +823,10 @@ consider by using this procedure is it may mask an underlying trend in
 prediction of the accuracy in which the model could overestimate early
 and then underestimate late or other non-linear behavior.
 
+\subsection*{Additional Modeling
+Considerations}\label{methodology-AdditionalConsiderations}
+\addcontentsline{toc}{subsection}{Additional Modeling Considerations}
+
 \textbf{Training and Forecasting Windows}
 
 In order to evaluate our model to avoid either overfitting or
@@ -710,17 +846,18 @@ explored the model stability of our baseline model and used the best
 criteria from that in order to decide the length of the cross validation
 window.
 
+\chapter*{Findings}\label{findings}
+\addcontentsline{toc}{chapter}{Findings}
+
+\section*{Results of descriptive analyses}\label{findings-descriptive}
+\addcontentsline{toc}{section}{Results of descriptive analyses}
+
 Because of the highly seasonal nature of the data, we created a baseline
 model using only Scholle data. We used periods of 2-year, 4-year and
 6-year windows, to identify the forecast window period with the greatest
 stability.
 
-\section*{Results of model performance and
-validation}\label{results-of-model-performance-and-validation}
-\addcontentsline{toc}{section}{Results of model performance and
-validation}
-
-\subsection*{Baseline Model - Prophet}\label{baseline-model---prophet}
+\subsection*{Baseline Model - Prophet}\label{findings-baseline}
 \addcontentsline{toc}{subsection}{Baseline Model - Prophet}
 
 Prophet is an open-source tool developed by Facebook to conduct time
@@ -735,14 +872,20 @@ ability to handle irregularly spaced data, speed, and interpretability.
 The figures below show results of the cross-validation analysis at 2, 4
 and 6 year training windows using the Prophet Model.
 \begin{figure}
-\centering
-\includegraphics{./figure/Prophet_SMAPE_CV.png}
-\caption{sMAPE CV Window Selection}
+
+{\centering \includegraphics[width=400px]{figure/Prophet_SMAPE_CV} 
+
+}
+
+\caption{2 4 and 6 year cross validation of Prophet models - sMAPE}\label{fig:cross-val-selection-smape}
 \end{figure}
 \begin{figure}
-\centering
-\includegraphics{./figure/Prophet_RMSE_CV.png}
-\caption{RMSE CV Window Selection}
+
+{\centering \includegraphics[width=400px]{figure/Prophet_RMSE_CV} 
+
+}
+
+\caption{2 4 and 6 year cross validation of Prophet models - RMSE}\label{fig:cross-val-selection-rmse}
 \end{figure}
 For both sMAPE and RMSE, the 2 year window shows much higher variability
 than the 4 or 6 year windows. Given the similarity of the 4 and 6 year
@@ -765,13 +908,13 @@ Train & 30\% & 29896.68 & 22\% & 0.86\tabularnewline
 Test & 43\% & 62625.69 & 67\% & 4.04\tabularnewline
 \bottomrule
 \end{longtable}
-\subsection*{Challenger Model sARIMA}\label{challenger-model-sarima}
+\subsection*{Challenger Model sARIMA}\label{findings-sARIMA}
 \addcontentsline{toc}{subsection}{Challenger Model sARIMA}
 
 Seasonality is a key feature of the dataset, as it was observed that the
 Tomato bags sales increase significantly during summer time from June to
 August and drop in September and October while repeating this cycle
-annually.This key attributes in the dataset meant we deploy a model that
+annually.This key attribute in the dataset meant we deploy a model that
 uses differencing at a lag equalling the number of seasons to remove
 additive seasonal effect.
 
@@ -791,50 +934,65 @@ In the figure below, the mean forecast value is highlighted in blue and
 the actual value is captured in red, and the confidence interval ranging
 between 80\%-95\%. The actual values are represented in black.
 \begin{figure}
-\centering
-\includegraphics{./figure/Arima_12month.png}
-\caption{Arima(0,0,2)(0,1,1)12 with Drift}
+
+{\centering \includegraphics[width=400px]{figure/Arima_12month} 
+
+}
+
+\caption{12 Month Arima}\label{fig:arima-12}
 \end{figure}
 \begin{figure}
-\centering
-\includegraphics{./figure/HarvestArima.png}
-\caption{Arima(0,0,0)(2,1,0)5}
-\end{figure}
-\subsection{Challenger Model - Regression with ARIMA Errors\#\#\#
-\{unnumbered\}}\label{challenger-model---regression-with-arima-errors-unnumbered}
 
-The first challenger model we built is regression model with ARIMA
-errors. While the regression model allows for the inclusion of predictor
-variables, it does not allow for the subtle time series dynamics that
-can be handled with ARIMA models. The regression with ARIMA errors model
-solves this problem by fitting regression models with all the relevant
-variables first, and then applying ARIMA to the residuals of the
-regression to detect time series elements in the residuals.
+{\centering \includegraphics[width=400px]{figure/HarvestArima} 
+
+}
+
+\caption{Harvest (June-October) Month Arima}\label{fig:arima-5}
+\end{figure}
+The Arima model, especially for the harvest months, provides a
+compelling challenge due to its simplicity.
+
+\subsection*{Challenger Model - Regression with ARIMA
+Errors}\label{findings-Regression}
+\addcontentsline{toc}{subsection}{Challenger Model - Regression with
+ARIMA Errors}
+
+The next challenger model we built is a linear regression model with
+ARIMA errors. While the regression model allows for the inclusion of
+predictor variables, it does not allow for the subtle time series
+dynamics that can be handled by ARIMA models. The regression with ARIMA
+errors model solves this problem by fitting regression models with all
+the relevant variables first, and then applying ARIMA to the residuals
+of the regression to detect time series elements in the residuals.
 
 We explored the correlations of twitter data and Google trend Scholle
 tomato bag sales and found the keywords and lags in Table 4 and Table 6
 tend to strongly correlated with tomato bag sales. Since the regression
 with ARIMA errors is based on linear regression, we first build a linear
 regression model these keywords and lags. Results are shown in below
-Table 10. Significant variables are highlighted in green.
+Table \_ . Significant variables are highlighted in green.
 
 Based on the variables significant in the linear model, we built the
 regression model with ARIMA errors. The parameters and accuracy are
-shown below in Table 11 and Table 12.
+shown below in Table and Table .
 \begin{longtable}[]{@{}rrr@{}}
 \toprule
 Keyword\ldots{}Lag & Estimate & P.Value\tabularnewline
 \midrule
 \endhead
-Google bbq lag 10 & -39516 & 0.137173\tabularnewline
-Google chili lag 15 & -42963 & 0.017008\tabularnewline
-Google salsa lag 12 & 92606 & 0.000366\tabularnewline
-Google tomato lag 12 & 122522 & 0.000145\tabularnewline
+Intercept & 114883 & 0.00\tabularnewline
+bbq\_twitter\_lag17 & -7771 & 0.48\tabularnewline
+pasta\_twitter\_lag18 & 7946 & 0.74\tabularnewline
+tomato\_twitter\_lag15 & 2645 & 0.80\tabularnewline
+Google bbq lag 10 & -39516 & 0.14\tabularnewline
+Google chili lag 15 & -42963 & 0.02\tabularnewline
+Google salsa lag 12 & 92606 & 0.00\tabularnewline
+Google tomato lag 12 & 122522 & 0.00\tabularnewline
 \bottomrule
 \end{longtable}
 Based on the variables significant in the linear model, we built the
 regression model with ARIMA errors. The parameters and accuracy are
-shown below in Table and Table 12.
+shown below in Table and Table .
 \begin{longtable}[]{@{}rrr@{}}
 \toprule
 Keyword\ldots{}Lag & Estimate & P.Value\tabularnewline
@@ -867,11 +1025,11 @@ google searches is more direct in measuring the importance of the
 keywords and lags, compared to twitter data which might lose some
 information both due to the limitations in gathering tweet data and due
 to the complicated natural language preprocessing process. The ARIMA
-errors is (0,0,0), indicating our model has extracting enough
-informations and there's no time series dynamics in the residuals.
+error is (1,0,0),(0,1,2){[}12{]}, indicating that the regression data
+was not sufficient to capture the time series elements of the data.
 
 \subsection*{Challenger Model - Random Forest
-Regression}\label{challenger-model---random-forest-regression}
+Regression}\label{findings-RF}
 \addcontentsline{toc}{subsection}{Challenger Model - Random Forest
 Regression}
 
@@ -921,8 +1079,7 @@ this the month was the most important predictor followed closely by
 google salsa data at lag 12. This agrees with the importance of monthly
 seasonality that we observed in the other models.
 
-\subsection*{Challenger Model -
-XGBoost}\label{challenger-model---xgboost}
+\subsection*{Challenger Model - XGBoost}\label{findings-XGBoost}
 \addcontentsline{toc}{subsection}{Challenger Model - XGBoost}
 
 XGBoost is an implementation of gradient boosted decision trees designed
@@ -937,26 +1094,20 @@ Train & 15\% & 55311.64 & 11\% & 0.52\tabularnewline
 Test & 35\% & 88097.99 & 44\% & 2.00\tabularnewline
 \bottomrule
 \end{longtable}
-\subsection*{Stacking Forecasts}\label{stacking-forecasts}
+\subsection*{Stacking Forecasts}\label{findings-Stacking}
 \addcontentsline{toc}{subsection}{Stacking Forecasts}
 
-Our project focuses only on the ship-to date sales number. The overall
-time range from people speaking about keywords on social media, to its
-influence on tomato demand, and then to the whole order, manufacture and
-ship process takes place for at least 9 months. So we think it's more
-meaningful to exclude lags shorter than 9 months. We explored the
-correlations between Scholle tomato bag sales and twitter data as well
-as Google trend with lags from 9 months up to 24 months, and built
-regression with ARIMA model using only the keywords and lags exhibiting
-strongly correlations.
-
-Based on discussions with Scholle, we limited the scope to simply the
-months of June through October, the months when tomatoes become ripe in
-California. We refer to these months as the harvest months.
+Our project focuses on shipment quantity. There will inherently be some
+lag between the time someone has interaction on social media and its
+effect on the tomato bag shipments. Given that the vast majority of
+shipments occur during June through October, we limited the evaluation
+of model results to those months. These months coincide with when
+tomatoes become ripe in California, we thus refer to these months as the
+harvest months.
 
 The stacking method is used to create an additional consensus model by
-using the results of trained models. There are two approaches we used
-for stacking, simple averaging and creation of a linear model.
+using the results of trained models. We used two approaches to stacking,
+simple averaging and a linear model.
 
 We then combined our forecast results from all models mentioned prior in
 this report, including the ARIMA model built only on the more stationary
@@ -969,38 +1120,140 @@ predictions using a simple average.
 
 The second approach to stacking we attempted was to build a linear model
 using the results of all our other models. This model was trained on all
-the harvest month data for 2014-2018. The fitted values produced a
-better estimate of the actual than the simple average of Random Forest
-and Regression with Arima Error. However, we must consider the amount of
-information the additional variables add to the regression. When we
-applied the step function we achieved a minimized AIC for a linear model
-composed of just arima with Regression Error \& Random Forest. The
-linear combination of the two slightly weighs more towards the Random
-Forest over the Regression with Arima Error.
+the harvest month data for 2014-2018. An important facet of a linear
+model is that it optimizes the weighting of each variable. Our case this
+is the model result. The fitted values produced a better estimate of the
+actual than the simple average of Random Forest and Regression with
+Arima Error.
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+& x\tabularnewline
+\midrule
+\endhead
+Intercept & -6428.4630100\tabularnewline
+Arima & 0.7431722\tabularnewline
+Arima\_reg & -0.1683120\tabularnewline
+RF & 0.6933001\tabularnewline
+xgb & 0.3950322\tabularnewline
+pro & -0.5076684\tabularnewline
+\bottomrule
+\end{longtable}
+However the best fitting linear model does not consider if each of the
+inputs adds to the total information that is represented in each of the
+variables added. To address this, we applied the step function to find
+the model that produces the lowest AIC.
+
+Overall the linear model blend performed the best for both sMAPE and
+RMSE leading us to choose it as our champion model.
+
+key: * arima - * arima\_reg - * xgb - * pro -
+\begin{longtable}[]{@{}rrrrr@{}}
+\toprule
+Model & sMAPE & RMSE & X..Bias & Accuracy\tabularnewline
+\midrule
+\endhead
+arima & 12.76369 & 369493.5 & 0.48 & 1.0930270\tabularnewline
+arima\_reg & 11.59555 & 378343.2 & 0.52 & 1.1734880\tabularnewline
+RF & 12.75160 & 427591.7 & 0.36 & 1.0892416\tabularnewline
+xgb & 19.91717 & 611248.7 & 0.32 & 0.9974092\tabularnewline
+pro & 16.30583 & 393135.5 & 0.56 & 1.1628570\tabularnewline
+tot\_avg & 12.82756 & 362912.5 & 0.44 & 1.1032046\tabularnewline
+arima+arima\_reg & 11.99662 & 366844.9 & 0.52 & 1.1332575\tabularnewline
+arima+RF & 11.06201 & 339078.2 & 0.44 & 1.0911343\tabularnewline
+arima+xgb & 14.08614 & 412555.8 & 0.36 & 1.0452181\tabularnewline
+arima+pro & 13.66767 & 345109.6 & 0.48 & 1.1279420\tabularnewline
+arima\_reg+RF & 11.02261 & 345499.1 & 0.48 & 1.1313648\tabularnewline
+arima\_reg+xgb & 13.47914 & 417879.0 & 0.36 & 1.0854486\tabularnewline
+arima\_reg+pro & 12.96459 & 348679.2 & 0.56 & 1.1681725\tabularnewline
+RF+xgb & 15.06955 & 494505.8 & 0.36 & 1.0433254\tabularnewline
+RF+pro & 13.95099 & 378280.1 & 0.52 & 1.1260493\tabularnewline
+xgb+pro & 17.60323 & 473411.7 & 0.48 & 1.0801331\tabularnewline
+arima+arima\_reg+RF & 11.33500 & 335521.4 & 0.52 &
+1.1185856\tabularnewline
+arima+arima\_reg+xgb & 12.76800 & 374804.7 & 0.52 &
+1.0879748\tabularnewline
+arima+arima\_reg+pro & 12.82931 & 344284.7 & 0.52 &
+1.1431240\tabularnewline
+arima\_reg+RF+xgb & 12.61945 & 402010.3 & 0.40 &
+1.0867130\tabularnewline
+arima\_reg+RF+pro & 12.19553 & 342480.6 & 0.52 &
+1.1418622\tabularnewline
+RF+xgb+pro & 12.61945 & 402010.3 & 0.40 & 1.0867130\tabularnewline
+Linear Model Blend & 10.95078 & 297958.3 & 0.56 &
+1.1296389\tabularnewline
+\bottomrule
+\end{longtable}
+\subsection*{Residual Analysis}\label{findings-Residual-Analysis}
+\addcontentsline{toc}{subsection}{Residual Analysis}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#plot each of the forecasts & the blend & actual}
+\end{Highlighting}
+\end{Shaded}
+Residual analysis is an important final step because it helps us
+understand if our model has any systemic biases that we should be aware
+of going forward.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm_blender <-}\StringTok{ }\KeywordTok{readRDS}\NormalTok{(}\StringTok{'./data/LM_Blender.rds'}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(lm_blender)}
+\end{Highlighting}
+\end{Shaded}
+\includegraphics{UChicago-MScA-Capstone_files/figure-latex/unnamed-chunk-3-1.pdf}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{facts =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(lm_blender}\OperatorTok{$}\NormalTok{residuals),}
+          \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(lm_blender}\OperatorTok{$}\NormalTok{residuals),}
+          \DataTypeTok{variance =} \KeywordTok{var}\NormalTok{(lm_blender}\OperatorTok{$}\NormalTok{residuals),}
+          \DataTypeTok{skewness =}\NormalTok{ e1071}\OperatorTok{::}\KeywordTok{skewness}\NormalTok{(lm_blender}\OperatorTok{$}\NormalTok{residuals),}
+          \DataTypeTok{kurtosis =}\NormalTok{ e1071}\OperatorTok{::}\KeywordTok{kurtosis}\NormalTok{(lm_blender}\OperatorTok{$}\NormalTok{residuals))}
+          
+\NormalTok{kableExtra}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(facts, }\DataTypeTok{digit =} \DecValTok{2}\NormalTok{, }\DataTypeTok{align =} \StringTok{"r"}\NormalTok{, }\DataTypeTok{caption =} \StringTok{"Model Blend Summary"}\NormalTok{, }
+      \DataTypeTok{format =} \StringTok{"markdown"}\NormalTok{, }\DataTypeTok{longtable =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+& x\tabularnewline
+\midrule
+\endhead
+mean & 0.00\tabularnewline
+median & -12461.53\tabularnewline
+variance & 3699131576.47\tabularnewline
+skewness & 0.34\tabularnewline
+kurtosis & -0.47\tabularnewline
+\bottomrule
+\end{longtable}
+\textbf{Breusch-Pagan test for heteroscedasticity}
+\begin{verbatim}
+
+    studentized Breusch-Pagan test
+
+data:  lm_blender
+BP = 10.402, df = 5, p-value = 0.06462
+\end{verbatim}
+\textbf{NCV test for heteroscedasticity}
+
+Both the Breusch-Pagan and NCV tests detect heteroscedasticity.
 
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-This section includes a concise summary of the findings. Your summary
-might be organized by the research objectives or hypotheses. Make sure
-you address the extent to which research objectives are achieved, and if
-they are not achieved, explain why. Make sure to interpret your findings
-in a way that acknowledges the limitations of the research. That is, do
-not extrapolate the insights derived from your research to situations
-you have not examined.
-
-\emph{While increasing dosage leads to larger incisor length, the choice
-of delivery mechanism between Orange Juice and Vitamin C does not seem
-to make a difference. However, at very low levels, Orange Juice appears
-more effective, displaying higher average growth.}
+We were able to use social media data to better forecast tomato bag
+shipment data beyond the ability Scholle's existing process of only
+incorporating its prior year data.
 
 \chapter*{Recommendations}\label{recommendations}
 \addcontentsline{toc}{chapter}{Recommendations}
 
-Includes guidelines as to ways in which your results should or could be
-used in practice. You may discuss other uses of your results, if there
-are any. The ways to extend your analysis and the benefits of doing so
-might be included in this section as well.
+We recommend continuing collecting social media data and incorporating
+the results into the overall ensemble model for harvest month data.
 
 \appendix
 
@@ -1017,10 +1270,70 @@ chunk tag) to help with readibility and/or setup.
 \chapter{A Second Appendix, for
 example}\label{a-second-appendix-for-example}
 
+\backmatter
+
 \chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}
 
-Placeholder
+\markboth{References}{References}
+
+\noindent
+
+\setlength{\parindent}{-0.20in} \setlength{\leftskip}{0.20in}
+\setlength{\parskip}{8pt}
+
+There are a variety of tools available for creating a bibliography
+database (stored with the .bib extension). In addition to BibTeX
+suggested below, you may want to consider using the free and easy-to-use
+tool called \href{https://www.zotero.org/}{Zotero}.
+
+\emph{R Markdown} uses \emph{pandoc} (\url{http://pandoc.org/}) to build
+its bibliographies. To cite references in your thesis (after creating
+your bibliography database), place the reference name inside square
+brackets and precede it by the ``at'' symbol. For example, here's a
+reference to a book about worrying: (Molina \& Borkovec, 1994). This
+\texttt{Molina1994} entry appears in a file called \texttt{thesis.bib}
+in the \texttt{bib} folder. This bibliography database file was created
+by a program called BibTeX. You can call this file something else if you
+like (look at the YAML header in the main .Rmd file) and, by default, is
+to placed in the \texttt{bib} folder.
+
+\textbf{Additional Tips}
+\begin{itemize}
+\tightlist
+\item
+  The sooner you start compiling your bibliography for something as
+  large as a capstone, the better. Typing in source after source is
+  mind-numbing enough; do you really want to do it for hours on end at
+  the last minute?
+\item
+  The cite key (a citation's label) needs to be unique from the other
+  entries.
+\item
+  When you have more than one author or editor, you need to separate
+  each author's name by the word ``and'' e.g.
+  \texttt{Author\ =\ \{Noble,\ Sam\ and\ Youngberg,\ Jessica\},}
+\end{itemize}
+\textbf{Example output generated from bib file}
+
+\hypertarget{refs}{}
+\hypertarget{ref-angel2000}{}
+Angel, E. (2000). \emph{Interactive computer graphics : A top-down
+approach with opengl}. Boston, MA: Addison Wesley Longman.
+
+\hypertarget{ref-angel2001}{}
+Angel, E. (2001a). \emph{Batch-file computer graphics : A bottom-up
+approach with quicktime}. Boston, MA: Wesley Addison Longman.
+
+\hypertarget{ref-angel2002a}{}
+Angel, E. (2001b). \emph{Test second book by angel}. Boston, MA: Wesley
+Addison Longman.
+
+\hypertarget{ref-Molina1994}{}
+Molina, S. T., \& Borkovec, T. D. (1994). The Penn State worry
+questionnaire: Psychometric properties and associated characteristics.
+In G. C. L. Davey \& F. Tallis (Eds.), \emph{Worrying: Perspectives on
+theory, assessment and treatment} (pp. 265--283). New York: Wiley.
 
 
 % Index?

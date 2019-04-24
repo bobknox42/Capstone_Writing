@@ -1,4 +1,8 @@
 Keyword & Lag,Estimate,P Value
+Intercept,114883,1.06E-13
+bbq_twitter_lag17,-7771,0.483716
+pasta_twitter_lag18,7946,0.738248
+tomato_twitter_lag15,2645,0.804153
 Google bbq lag 10,-39516,0.137173
 Google chili lag 15,-42963,0.017008
 Google salsa lag 12,92606,0.000366
