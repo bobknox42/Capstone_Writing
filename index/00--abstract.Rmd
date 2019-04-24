@@ -1,12 +1,12 @@
 Abstract
 
-Our research focus was on improving the forecast of tomato/bag sales for a company named Scholle by using social media conversation. We received Sales data from Scholle spanning period of 2010 to 2018.Lagged social media data sourced from Twitter and Google Trends was regressed on Scholle data using various time series model.  Random Forest Model was found to be the most successful in predicting the Tomato bags Sales. From this study, we developed a set of analytical models when applied by Scholle improved the prediction of Tomato bag sales using social media data.
+Our research was to find exogenous variables derived from social media data in order to improve the forecasts of Scholle IPN's tomato bag shipments on a monthly basis. We leveraged two data sources to help forecast shipments, Google Trends and Twitter. Google Trends data collected the relative frequency of certain keyword searches over the research period of 2007 to 2018. Twitter data collected tweets containing keywords over the research period of 2007 to 2018. These tweets were then processed using open-source natural language processing libraries to determine the tweet's sentimentality of positive or negative. Several models were created, validated and ensembled to produce the best model to forecast tomato bag shipments.
 
 \bigskip 
 \bigskip
 \bigskip
 
-**Keywords**: Forecast, Social media data, Regression, Scholle data, time series model, Random Forest Model
+**Keywords**: Forecast, Shipment, Social Media, Regression, Time Series, Random Forest, XGBoost,Ensemble Model. 
 
 \bigskip 
 \bigskip

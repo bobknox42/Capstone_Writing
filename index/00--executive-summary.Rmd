@@ -1,14 +1,14 @@
+**OBJECTIVE:** Our research was to find exogenous variables derived from social media data in order to improve the forecasts of Scholle IPN's tomato bag shipments on a monthly basis.
 
-The executive summary is a maximum one page, double spaced summary of your report aimed at informing someone, who does not read the entire report, about your project. The executive summary is an extended version of the abstract with more space allocated to the key findings of the project and the conclusions and recommendations. You may want to write this section after writing the report. 
+**METHODS:** We used natural language processing and time-series analysis to forecast tomato bag shipments.
 
+**RESULTS:** We found models that leveraged...
 
-Second Paragraph. 
-
-Third Paragraph.
+**CONCLUSIONS:**We were able to ...
 
 \bigskip
 \bigskip
 \bigskip
-**NOTE:** Like the abstract, do not use "#" or "##" symbols to start new sections in the executive summary section. Doing so will result in generating a table table of contents entry _prior_ to the Introduction, which is not desirable.
+
 
 
