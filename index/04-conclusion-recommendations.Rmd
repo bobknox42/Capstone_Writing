@@ -1,7 +1,7 @@
 # Conclusion {.unnumbered}
 
-We were able to use social media data to better forecast tomato bag shipment data beyond the ability Scholle's existing process of only incorporating its prior year data. 
+The goal of study was to use social media data to develop a better forecasting methodology for tomato bag sales. We were able to use social media data to better forecast tomato bag shipment data beyond the ability Scholle's existing process of only incorporating its prior year data.
 
 # Recommendations {.unnumbered}
 
-We recommend continuing collecting social media data and incorporating the results into the overall ensemble model for harvest month data.
+We recommend continuing collecting social media data and incorporating the results into the overall ensemble model for harvest month data. Ensembling the model developed in this study along with the other models of the mega project produces a better model to help the Scholle team better plan for their operation.

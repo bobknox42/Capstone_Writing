@@ -45,13 +45,13 @@ kableExtra::kable(df_Prophet_Results, digit = 7, align = "r", caption = "Prophet
 
 Seasonality is a key feature of the dataset, as it was observed that the Tomato bags  sales increase significantly during summer time from June to August and drop in September and October while repeating this cycle annually.This key attribute in the dataset  meant we deploy a model that uses differencing at a lag equalling the number of seasons to remove additive seasonal effect.
 
-For this challenger, we split the data into two groupings; harvest months (June -October) and all months. In the Table 7 & 8 below, we summarise the result for the model:
+For this challenger, we split the data into two groupings; harvest months (June - October) and all months. In the Table  &  below, we summarise the result for the model:
 
 
-```{r sArima_Results,echo=FALSE}
+```{r sArima_Results,echo=FALSE,fig.cap="Seasonal Arima"}
 df_sArima_Results_path = "./data/sArima_Results.csv"
 df_sArima_Results = read.csv(df_sArima_Results_path)
-kableExtra::kable(df_sArima_Results, digit = 7, align = "r", caption = "Seasonal Arima", 
+kableExtra::kable(df_sArima_Results, digit = 2, align = "r", caption = "Seasonal Arima", 
       format = "markdown", longtable = TRUE)
 ```
 
@@ -182,14 +182,14 @@ kableExtra::kable(blend_summary, digit = 7, align = "r", caption = "Model Blend 
 
 Residual analysis is an important final step because it helps us understand if our model has any systemic biases that we should be aware of going forward. 
 
-```{r}
+```{r lm_blender, echo=FALSE}
 lm_blender <- readRDS('./data/LM_Blender.rds')
 par(mfrow=c(2,2))
 plot(lm_blender)
 par(mfrow=c(1,1))
 ```
 
-```{r}
+```{r residual-facts, echo=FALSE}
 facts = c(mean = mean(lm_blender$residuals),
           median = median(lm_blender$residuals),
           variance = var(lm_blender$residuals),

@@ -1,0 +1,7 @@
+Columns of Interest ,Description 
+Company,The Scholle factory that produces the bags
+Top Most BP,The parent entity of Scholle's customers
+Item Number,The unique identifier for each type of bag
+Ship to State,The state the bag order is shipped to
+Quantity,The quantity of bags shipped
+Planned Delivery Date,The date we will model predictions on as this is the date Scholle is looking to have bags delivered to their customers

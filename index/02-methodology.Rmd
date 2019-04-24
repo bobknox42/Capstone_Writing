@@ -5,7 +5,12 @@
 ### Scholle Data {#methodology-scholle .unnumbered}
 Scholle provided a data file in the form of an excel document that included sales record data from 2010-2018. The following table describes the relevant columns from the data file.
 
-**INSERT TABLE OF SCHOLLE COLUMNS HERE.**
+```{r scholledata,echo=FALSE,warning=FALSE,error=FALSE,fig.cap="Scholle Data"}
+scholledata = read.csv('./data/schollecolumns.csv')
+
+kable(scholledata, digit = 0, align = "r", caption = "Scholle Data", 
+      format = "markdown", longtable = TRUE)
+```
 
 Based on discussions with Scholle's management, we removed any sales transactions that were marked with a Quantity less than or equal to zero. This was due to the data being extracted from their sales system in which negative or zero quantity records were used to true up returns or modify existing order pricing which were not relevant to our analysis.
 
@@ -178,6 +183,7 @@ The Twitter data are sampled via a quasi-random approach that grabs data monthly
 **Assumptions & Limitations**
  
 **Google Trends**
+
 Assumptions:
 
 * We limited the Google Trends search to the United States.
@@ -189,6 +195,7 @@ Limitation:
 * The actual number of searches for the term being queried is not made available. Instead, the data are reported from 0-100, where 100 represents the maximum relative search frequency.
  
 **Twitter Datasets**
+
 Assumptions:
 
 * We limited Twitter data to the United States.
@@ -196,6 +203,7 @@ Assumptions:
 * The frequency of tweets we collected for each keyword will be independent of the time period in which we collected them.
 
 Limitations:
+
 * The demographic information of the twitter account user cannot be determined.
 
 * With the limitation of our premium account API activity, we can only submit 100 requests to collect tweet per month. Per each request, we can get a maximum of 500 tweets back.
@@ -206,7 +214,7 @@ Limitations:
 
 Working with Scholle, we developed a list of keywords to target in our social media data collection. The keywords are listed in Table \@ref(tab:Keywords) below:
 
-```{r Keywords,echo=FALSE}
+```{r Keywords,echo=FALSE,warning=FALSE,error=FALSE}
 kwords = c("bbq","chili","ketchup","pasta","pizza","salsa","spaghetti","tomato")
 
 kable(t(kwords), digit = 7, align = "c", caption = "Keywords", 
@@ -224,6 +232,11 @@ Subsequent seasonality & trend analysis to identify meaningful predictors
 Twitter Data
 
 We have collected tweets based on the keywords in Table  below. Tweets were aggregated on a monthly basis. The figure below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
+
+```{r twitter-time, out.width="400px", fig.align="center", fig.cap="CCF Google", echo=FALSE}
+library(knitr)
+include_graphics(path = "figure/twitter-time.png")
+```
 
 
 Google Trend Analysis
