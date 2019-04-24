@@ -37,7 +37,7 @@ kable(df_Prophet_Results, digit = 7, align = "r", caption = "External Data Sourc
 
 ###Challenger Model sARIMA {#findings-sARIMA .unnumbered}
 
-Seasonality is a key feature of the dataset, as it was observed that the Tomato bags  sales increase significantly during summer time from June to August and drop in September and October while repeating this cycle annually.This key attributes in the dataset  meant we  deploy a model that uses differencing at a lag equalling the number of seasons to remove additive seasonal effect.
+Seasonality is a key feature of the dataset, as it was observed that the Tomato bags  sales increase significantly during summer time from June to August and drop in September and October while repeating this cycle annually.This key attribute in the dataset  meant we deploy a model that uses differencing at a lag equalling the number of seasons to remove additive seasonal effect.
 
 For this challenger, we split the data into two groupings; harvest months (June -October) and all months. In the Table 7 & 8 below, we summarise the result for the model:
 
@@ -173,7 +173,7 @@ kable(blend_summary, digit = 7, align = "r", caption = "Model Blend Summary",
 Residual analysis is an important final step because it helps us understand if our model has any systemic biases that we should be aware of going forward. 
 
 ```{r}
-lm_blender <- readRDS('./data/LM_Blender.rds')
+lm_all <- readRDS('./data/LM_Blender.rds')
 par(mfrow=c(2,2))
 plot(lm_blender)
 par(mfrow=c(1,1))
@@ -193,14 +193,14 @@ kable(facts, digit = 2, align = "r", caption = "Model Blend Summary",
 **Breusch-Pagan test for heteroscedasticity**
 
 ```{r}
-lmtest::bptest(lm_all)
+lmtest::bptest(lm_blender)
 #p-value = 0.06462
 ```
 
 **NCV test for heteroscedasticity**
 
 ```{r}
-car::ncvTest(lm_all)
+car::ncvTest(lm_blender)
 # p = 0.23261
 ```
 

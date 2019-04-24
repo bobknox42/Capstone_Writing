@@ -145,7 +145,7 @@ Quantity by Item Number does not greatly vary greatly from the aggregated Quanti
 
 ###External Data Collection
 
-We collected Social Media data from two sources: Twitter and the Google Trends. Google Trends summarised US monthly search statistics from 2004 to 2019. The twitter data collected are of US users from 2007 to 2018.
+Google engine search and twitter are important and representative social media sources whose data is accessible. We collected social media data from two sources: Twitter and the Google Trends. Google Trends summarized US monthly search statistics from 2004 to 2019. The twitter data collected are of US users from 2007 to 2018.
 
 Google Trends returns a single value showing how frequently a given search term (e.g. ‘Tomato’) goes in Google’s search engine relative to its total search frequency for a given period. 
 
@@ -208,6 +208,7 @@ Subsequent seasonality & trend analysis to identify meaningful predictors
 Twitter Data
 
 We have collected tweets based on the keywords in Table 3 below. Tweets were aggregated on a monthly basis. The figure below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
+
 
 Google Trend Analysis
 
@@ -290,7 +291,7 @@ kable(df_Twitter_Lags, digit = 7, align = "r", caption = "External Data Sources"
 
 ### Model Selection Metrics {#methodology-ModelSelectionCriteria .unnumbered}
 
-In order to determine the best model, we began by choosing selection metrics to test each model. The following metrics outlined below will be used to measure the performance of each model.
+In order to determine the best model for predicting bag shipments, we began by choosing selection metrics to test each model. The following metrics outlined below will be used to measure the performance of each model.
 1. SMAPE 
 2. RMSE 
 3. % bias – no of time above forecast vs below.
