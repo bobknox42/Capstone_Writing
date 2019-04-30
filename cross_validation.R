@@ -942,3 +942,31 @@ write.csv(tail(y_agg_harvest['arima'],15),"arima.csv")
 ###step LM to find the important predictors that add information
 lm_step <- step(lm_all)
 summary(lm_step)
+
+y_agg_harvest
+nrow(y_agg_harvest)
+matplot(x = c(1:25),y = matrix(y_agg_harvest[,-1]))
+
+matplot(1:25,matrix(y_agg_harvest[,-1]))
+library(forecast)
+lm_all$fitted.values
+ts_act <- ts(y_act_harvest['x'],start=c(1,1),frequency = 5)
+ts_proph <- ts(y_agg_harvest$pro,start=c(1,1),frequency = 5)
+ts_arima <- ts(y_agg_harvest$arima,start=c(1,1),frequency = 5)
+ts_arima_reg <- ts(y_agg_harvest$arima_reg,start=c(1,1),frequency = 5)
+ts_rf <- ts(y_agg_harvest$RF,start=c(1,1),frequency = 5)
+ts_xgb <- ts(y_agg_harvest$xgb,start=c(1,1),frequency = 5)
+ts_blend <- ts(lm_all$fitted.values,start=c(1,1),frequency = 5)
+library(ggplot2)
+autoplot(ts_act)+
+  autolayer(ts_proph)+
+  autolayer(ts_arima)+
+  autolayer(ts_arima_reg)+
+  autolayer(ts_rf)+
+  autolayer(ts_xgb)+
+  autolayer(ts_blend)+
+  ggtitle("Harvest month predictions, 2014-2018")
+
+y_agg_harvest$arima
+y_agg_harvest$arima_reg
+y

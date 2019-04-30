@@ -18,12 +18,12 @@ Prophet is an open-source tool developed by Facebook to conduct time series mode
 
 The figures below show results of the cross-validation analysis at 2, 4 and 6 year training windows using the Prophet Model. 
 
-```{r cross-val-selection-smape, out.width="400px", fig.align="center", fig.cap="2 4 and 6 year cross validation of Prophet models - sMAPE", echo=FALSE}
+```{r croosvalrmse, out.width="400px", fig.align="center", fig.cap="2 4 and 6 year cross validation of Prophet models - sMAPE", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/Prophet_SMAPE_CV.png")
 ```
 
-```{r cross-val-selection-rmse, out.width="400px", fig.align="center", fig.cap="2 4 and 6 year cross validation of Prophet models - RMSE", echo=FALSE}
+```{r crossvalrmse, out.width="400px", fig.align="center", fig.cap="2 4 and 6 year cross validation of Prophet models - RMSE", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/Prophet_RMSE_CV.png")
 ```
@@ -34,11 +34,11 @@ For both sMAPE and RMSE, the 2 year window shows much higher variability than th
 
 The reported model metrics are the mean values for each of the cross validation periods collected.
 
-```{r Prophet_Results,echo=FALSE}
+```{r prophetresults,echo=FALSE}
 df_Prophet_Results_path = "./data/Prophet_Results.csv"
 df_Prophet_Results = read.csv(df_Prophet_Results_path)
 kableExtra::kable(df_Prophet_Results, digit = 7, align = "r", caption = "Prophet Results", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 ###Challenger Model sARIMA {#findings-sARIMA .unnumbered}
@@ -52,7 +52,7 @@ For this challenger, we split the data into two groupings; harvest months (June 
 df_sArima_Results_path = "./data/sArima_Results.csv"
 df_sArima_Results = read.csv(df_sArima_Results_path)
 kableExtra::kable(df_sArima_Results, digit = 2, align = "r", caption = "Seasonal Arima", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 In the figure below, the mean forecast value is highlighted in blue and the actual value is captured in red, and the confidence interval ranging between 80%-95%. The actual values are represented in black.
