@@ -82,7 +82,7 @@ Based on the variables significant in the linear model, we built the regression 
 df_lmod_all_path = "./data/lmod_all.csv"
 df_lmod_all = read.csv(df_lmod_all_path)
 kableExtra::kable(df_lmod_all, digit = 2, align = "r", caption = "Linear Model", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table  and Table .
@@ -91,7 +91,7 @@ Based on the variables significant in the linear model, we built the regression 
 df_lmod_step_path = "./data/lmod_step.csv"
 df_lmod_step = read.csv(df_lmod_step_path)
 kableExtra::kable(df_lmod_step, digit = 7, align = "r", caption = "Linear model with Regression Error", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 Positive coefficients imply that for a unit increase in the variable, there is a corresponding positive increase in the Scholle bag sales. Negative coefficients imply that for a unit increase in the variable, there is a corresponding negative decrease in the Scholle bag sales.The negative coefficient shows there is an inverse relationship between the  variable and Scholle bag sales.
@@ -100,7 +100,7 @@ Positive coefficients imply that for a unit increase in the variable, there is a
 df_lmod_arima_path = "./data/Reg_Arima_Results.csv"
 df_lmod_arima = read.csv(df_lmod_arima_path)
 kableExtra::kable(df_lmod_arima, digit = 7, align = "r", caption = "Regression with Arima Error Results", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 The above results indicate that Google trend data tend to have a greater influence in the predictions than twitter data, because the count in google searches is more direct in measuring the importance of the keywords and lags, compared to twitter data which might lose some information both due to the limitations in gathering tweet data and due to the complicated natural language preprocessing process. The ARIMA error is (1,0,0),(0,1,2)[12], indicating that the regression data was not sufficient to capture the time series elements of the data.
@@ -119,7 +119,7 @@ The table below displays the results of our Random Forest model.
 df_RF_path = "./data/RF_Results.csv"
 df_RF = read.csv(df_RF_path)
 kableExtra::kable(df_RF, digit = 7, align = "r", caption = "Random Forest Results", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 An important feature of Random Forest modelling is its ability to generate rank-ordered summaries of variable importance. The model’s feature importance is displayed in the figure below.
@@ -138,7 +138,7 @@ XGBoost is an implementation of gradient boosted decision trees designed for spe
 df_xgb_path = "./data/xgb_Results.csv"
 df_xgb = read.csv(df_xgb_path)
 kableExtra::kable(df_xgb, digit = 7, align = "r", caption = "XGBoost Results", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 ###Stacking Forecasts {#findings-Stacking .unnumbered}
@@ -161,7 +161,7 @@ LM_coef <- c(Intercept = -6428.4630100,
              xgb = 0.3950322,
              pro = -0.5076684)
 kableExtra::kable(LM_coef, digit = 7, align = "r", caption = "Model Blend Summary", 
-      format = "markdown", longtable = FALSE)
+      format = "latex", longtable = FALSE)
 ```
 
 Overall the linear model blend performed the best for RMSE leading us to choose it as our champion model.
@@ -175,7 +175,7 @@ key:
 ```{r ModelBlend,echo=FALSE}
 blend_summary <- read.csv('./data/Model_Blend_Summary.csv')
 kableExtra::kable(blend_summary, digit = 7, align = "r", caption = "Model Blend Summary", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 ###Residual Analysis {#findings-Residual-Analysis .unnumbered}
@@ -197,7 +197,7 @@ facts = c(mean = mean(lm_blender$residuals),
           kurtosis = e1071::kurtosis(lm_blender$residuals))
           
 kableExtra::kable(facts, digit = 2, align = "r", caption = "Model Blend Summary", 
-      format = "markdown", longtable = FALSE)
+      format = "latex", longtable = FALSE)
 ```
 
 **Breusch-Pagan test for heteroscedasticity**
