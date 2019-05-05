@@ -24,7 +24,7 @@ We began with exploratory data analysis to help understand the Scholle data and 
 
 Order quantity is typically less than 50,000 bags, with a few orders significantly higher. Specifically, most order quantities are less than 30,000 bags. See \@ref(fig:Quantity-Histogram) below for histogram of Quantity.
 
-```{r Quantity-Histogram, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Histogram of Quantity", fig.width=6}
+```{r QuantityHistogram, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Histogram of Quantity", fig.width=6}
 folder <- "C:/Users/Bob/Desktop/Capstone"
 rawdata <- read.csv(paste(folder,"Sales_data_for_Capstone_Project_-_Student_Version_-_v3_CLEAN.csv",sep = "/"))
 coerce_cols <- c("fiscalquartername","FiscalPeriod","Company","Top_Most_BP","BusinessPartner","Item_Number","Item_Description","Ship_to_State","Ship_to_City","Line_of_Business")
@@ -51,7 +51,7 @@ Quantity is not normally distributed but is instead heavily skewed left. Large q
 
 The figure below plots the aggregated Quantity over time. 
 
-```{r Quantity-Time, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Quantity over Time", fig.width=6}
+```{r QuantityTime, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Quantity over Time", fig.width=6}
 library(lubridate)
 library(dplyr)
 library(stringr)
@@ -88,7 +88,7 @@ proc_data_complete%>%
 
 There is a large degree of seasonal behavior. Tomato bag shipments increase during summer time from June to August and begin to drop off in September and October. Quantity is very small during other months of the year. This seasonality is easier to observe in the chart below which aggregates bag shipments for each month of the year.
 
-```{r Quantity-Month, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Monthy Quantity by Year", fig.width=6}
+```{r QuantityMonth, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Monthy Quantity by Year", fig.width=6}
 proc_data_complete %>%
   group_by(Date)%>%
   ggplot(aes(x = year, y = tot))+ 
@@ -106,7 +106,7 @@ There is little year to year variation exhibited in each month, with the possibl
 
 In addition to exploring the shipment quantity by time, we also observed the effect that the Item Number on Quantity. Over 86% of shipments are driven by the top 10 out of a total of 60 item numbers.
 
-```{r IN-cumulative, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Cumulative Sales by Item Number", fig.width=5}
+```{r INcumulative, echo=FALSE, warning=FALSE,  message=FALSE, fig.cap="Cumulative Sales by Item Number", fig.width=5}
 #Cumulative aggregate by Item Number
 totals_by_Item_Number <- aggregate(Quantity~Item_Number,data=df,sum)
 totals_by_Item_Number <- totals_by_Item_Number[order(totals_by_Item_Number$Quantity,decreasing = T),]
@@ -123,7 +123,7 @@ ggplot(data=cum_tot_pct,aes(x=ID,y=cum_tot_pct))+
   scale_y_continuous(labels = scales::percent)
 ```
 
-```{r IN-time,echo=FALSE,warning=FALSE,  message=FALSE,fig.cap="Top 10 Item Number Quantity over Time", fig.width=5}
+```{r INtime,echo=FALSE,warning=FALSE,  message=FALSE,fig.cap="Top 10 Item Number Quantity over Time", fig.width=5}
 proc_data_complete %>%
   group_by(Item_Number)%>%
   summarise(tot=sum(tot))%>%
@@ -157,7 +157,7 @@ Google Trends returns a single value showing how frequently a given search term 
 
 Twitter data were gathered by collecting relevant tweets from Twitter using key search words  as shown in Table tab below. We can grab a tweet based on defined keyword from Twitter by calling the Twitter API function. Subsequently, we can categorize opinions expressed in a piece of text, in order to determine opinion on our research (i.e, positive, negative, or neutral). 
 
-```{r External-Data,echo=FALSE,warning=FALSE, message=FALSE}
+```{r ExternalData,echo=FALSE,warning=FALSE, message=FALSE}
 library(kableExtra)
 External_Data_Source <- c('Google Trend','Twitter')
 Frequency_Granularity <- c('Monthly','Monthly')
@@ -218,7 +218,7 @@ Working with Scholle, we developed a list of keywords to target in our social me
 kwords = c("bbq","chili","ketchup","pasta","pizza","salsa","spaghetti","tomato")
 
 kable(t(kwords), digit = 7, align = "c", caption = "Keywords", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 Twitter data
@@ -233,7 +233,7 @@ Twitter Data
 
 We have collected tweets based on the keywords in Table  below. Tweets were aggregated on a monthly basis. The figure below shows how frequently the keywords appears in the returned tweets over time. Pizza is more frequently mentioned in Twitter than other keywords.
 
-```{r twitter-time, out.width="400px", fig.align="center", fig.cap="CCF Google", echo=FALSE}
+```{r twittertime, out.width="400px", fig.align="center", fig.cap="CCF Google", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/twitter-time.png")
 ```
@@ -243,18 +243,18 @@ Google Trend Analysis
 
 We collected Google Trend data consisting the same keywords as we did in Tweet collection. The Google Trends data was standardized and subsequently the cross correlation was found with respect to the Scholle bag sales. Figure \@ref(fig:ccf-google) displays the results of the cross correlation analysis.
 
-```{r ccf-google, out.width="400px", fig.align="center", fig.cap="CCF Google", echo=FALSE}
+```{r ccfgoogle, out.width="400px", fig.align="center", fig.cap="CCF Google", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/CCF_Google_Results.png")
 ```
 
 
-```{r Lags-Google,echo=FALSE}
+```{r LagsGoogle,echo=FALSE}
 library(kableExtra)
 df_Google_Lags_path = "./data/Google_Lags.csv"
 df_Google_Lags = read.csv(df_Google_Lags_path)
 kable(df_Google_Lags, digit = 7, align = "r", caption = "Google Lags", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 In Table \@ref(tab:Lags-Google) above, we highlight cross-correlations greater than 0.5 and with a time period of greater than 8 months. Since the Scholle bag sales data are records of the demand are placed well in advance of the desired delivery date, we would expect a long lag window in order for the trends of social media to drive market forces that would affect demand. Red indicates positive relations and blue indicates negative correlations. The deeper the color, the greater its correlation with Scholle’s data. 
@@ -288,7 +288,7 @@ We used the spaCy English Core Web Large model to analyze each tweet to process 
 
 Spacy includes vector representations for individual words as well as entire entire sentences. See Figure  below for the Keyword Distance using Spacy.These are represented as 300 dimension Numpy arrays. To begin, we confirmed that were was a reasonable cosine distance measure between each of the keywords.
 
-```{r spacy-keyword, out.width="400px", fig.align="center", fig.cap="Spacy Keyword Vector Distance", echo=FALSE}
+```{r spacykeyword, out.width="400px", fig.align="center", fig.cap="Spacy Keyword Vector Distance", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/Keyword_Distance_Spacy.png")
 ```
@@ -297,7 +297,7 @@ There is a reasonable distance between each of the keywords with the exception o
 
 In addition, vectors representations of each tweet can be extracted. For each tweet keyword we summarised all vectors by finding their mean values for each dimension. We then found the pairwise distance measures for these ‘average’ tweets. See in the figure below
 
-```{r spacy-average, out.width="400px", fig.align="center", fig.cap="Spacy Average Tweet Vector Distance", echo=FALSE}
+```{r spacyaverage, out.width="400px", fig.align="center", fig.cap="Spacy Average Tweet Vector Distance", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/Tweet_Distance_Spacy.png")
 ```
@@ -311,7 +311,7 @@ In future work we will leverage these vector representations of the tweets to co
 TextBlob is an open source Python library for conducting natural language processing. It has a built in sentiment analyzer that utilizes two axes of analysis Polarity and Subjectivity. 
 Polarity refers to a positive or negative sentiment and ranges from positive one to negative one respectively. Subjective expresses the subjectivity or objectivity of the text. See Figure 24 below for the Tweet Polarity. The subjectivity axis ranges from zero to positive one where 0 is very objective and 1 is very subjective. See Figure 25 below for the Tweet Subjectivity .
 
-```{r tweet-polarity, out.width="400px", fig.align="center", fig.cap="Textblob Tweet Polarity", echo=FALSE}
+```{r tweetpolarity, out.width="400px", fig.align="center", fig.cap="Textblob Tweet Polarity", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/Tweet_Polarity.png")
 ```
@@ -338,12 +338,12 @@ include_graphics(path = "figure/CCF_Twitter_Results.png")
 It is important to note the difference in scale relative to the Google Trends results; the correlations to the Twitter sentiment index are much weaker.
 
 The table below compiles the list of lagged values used in our analysis.
-```{r Tweet_Lag,echo=FALSE}
+```{r TweetLag,echo=FALSE}
 library(kableExtra)
 df_Twitter_Lags_path = "./data/Twitter_Lags.csv"
 df_Twitter_Lags = read.csv(df_Twitter_Lags_path)
 kable(df_Twitter_Lags, digit = 7, align = "r", caption = "External Data Sources", 
-      format = "markdown", longtable = TRUE)
+      format = "latex", longtable = TRUE)
 ```
 
 ## Modeling Framework {#methodology-modeling .unnumbered}

@@ -48,7 +48,7 @@ Seasonality is a key feature of the dataset, as it was observed that the Tomato 
 For this challenger, we split the data into two groupings; harvest months (June - October) and all months. In the Table  &  below, we summarise the result for the model:
 
 
-```{r sArima_Results,echo=FALSE,fig.cap="Seasonal Arima"}
+```{r sArimaResults,echo=FALSE,fig.cap="Seasonal Arima"}
 df_sArima_Results_path = "./data/sArima_Results.csv"
 df_sArima_Results = read.csv(df_sArima_Results_path)
 kableExtra::kable(df_sArima_Results, digit = 2, align = "r", caption = "Seasonal Arima", 
@@ -57,12 +57,12 @@ kableExtra::kable(df_sArima_Results, digit = 2, align = "r", caption = "Seasonal
 
 In the figure below, the mean forecast value is highlighted in blue and the actual value is captured in red, and the confidence interval ranging between 80%-95%. The actual values are represented in black.
 
-```{r arima-12, out.width="400px", fig.align="center", fig.cap="12 Month Arima", echo=FALSE}
+```{r arima12, out.width="400px", fig.align="center", fig.cap="12 Month Arima", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/Arima_12month.png")
 ```
 
-```{r arima-5, out.width="400px", fig.align="center", fig.cap="Harvest (June-October) Month Arima", echo=FALSE}
+```{r arima5, out.width="400px", fig.align="center", fig.cap="Harvest (June-October) Month Arima", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/HarvestArima.png")
 ```
@@ -78,7 +78,7 @@ We explored the correlations of twitter data and Google trend Scholle tomato bag
 Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table  and Table .
 
 
-```{r All_Linear_Mod,echo=FALSE}
+```{r AllLinearMod,echo=FALSE}
 df_lmod_all_path = "./data/lmod_all.csv"
 df_lmod_all = read.csv(df_lmod_all_path)
 kableExtra::kable(df_lmod_all, digit = 2, align = "r", caption = "Linear Model", 
@@ -87,7 +87,7 @@ kableExtra::kable(df_lmod_all, digit = 2, align = "r", caption = "Linear Model",
 
 Based on the variables significant in the linear model, we built the regression model with ARIMA errors. The parameters and accuracy are shown below in Table  and Table .
 
-```{r Stepped_Linear_Model, echo=FALSE}
+```{r SteppedLinear_Model, echo=FALSE}
 df_lmod_step_path = "./data/lmod_step.csv"
 df_lmod_step = read.csv(df_lmod_step_path)
 kableExtra::kable(df_lmod_step, digit = 7, align = "r", caption = "Linear model with Regression Error", 
@@ -96,7 +96,7 @@ kableExtra::kable(df_lmod_step, digit = 7, align = "r", caption = "Linear model 
 
 Positive coefficients imply that for a unit increase in the variable, there is a corresponding positive increase in the Scholle bag sales. Negative coefficients imply that for a unit increase in the variable, there is a corresponding negative decrease in the Scholle bag sales.The negative coefficient shows there is an inverse relationship between the  variable and Scholle bag sales.
 
-```{r Reg_Arima_Err_Results,echo=FALSE}
+```{r RegArimaErrResults,echo=FALSE}
 df_lmod_arima_path = "./data/Reg_Arima_Results.csv"
 df_lmod_arima = read.csv(df_lmod_arima_path)
 kableExtra::kable(df_lmod_arima, digit = 7, align = "r", caption = "Regression with Arima Error Results", 
@@ -115,7 +115,7 @@ In addition, we decided to challenge the model by only using lags that we though
 
 The table below displays the results of our Random Forest model.
 
-```{r RF-Results, echo = FALSE}
+```{r RFResults, echo = FALSE}
 df_RF_path = "./data/RF_Results.csv"
 df_RF = read.csv(df_RF_path)
 kableExtra::kable(df_RF, digit = 7, align = "r", caption = "Random Forest Results", 
@@ -124,7 +124,7 @@ kableExtra::kable(df_RF, digit = 7, align = "r", caption = "Random Forest Result
 
 An important feature of Random Forest modelling is its ability to generate rank-ordered summaries of variable importance. The model’s feature importance is displayed in the figure below.
 
-```{r rf-v-imp, out.width="400px", fig.align="center", fig.cap="Random Forest Variable Importance", echo=FALSE}
+```{r rfvimp, out.width="400px", fig.align="center", fig.cap="Random Forest Variable Importance", echo=FALSE}
 library(knitr)
 include_graphics(path = "figure/RF_V_Imp.png")
 ```
@@ -134,7 +134,7 @@ The most important features are displayed at the top of this chart, in this the 
 ###Challenger Model - XGBoost {#findings-XGBoost .unnumbered}
 XGBoost is an implementation of gradient boosted decision trees designed for speed and performance. It build trees one at a time, where each new tree helps to correct errors made by previously trained tree.
 
-```{r xgb-Results,echo =FALSE}
+```{r xgbResults,echo =FALSE}
 df_xgb_path = "./data/xgb_Results.csv"
 df_xgb = read.csv(df_xgb_path)
 kableExtra::kable(df_xgb, digit = 7, align = "r", caption = "XGBoost Results", 
@@ -153,7 +153,7 @@ The second approach to stacking we attempted was to build a linear model using t
 
 The model results are tablulated below:
 
-```{r LM-All,echo=FALSE}
+```{r LMAll,echo=FALSE}
 LM_coef <- c(Intercept = -6428.4630100,
              Arima = 0.7431722,
              Arima_reg = -0.1683120,
@@ -182,14 +182,14 @@ kableExtra::kable(blend_summary, digit = 7, align = "r", caption = "Model Blend 
 
 Residual analysis is an important final step because it helps us understand if our model has any systemic biases that we should be aware of going forward. 
 
-```{r lm_blender, echo=FALSE}
+```{r lmblender, echo=FALSE}
 lm_blender <- readRDS('./data/LM_Blender.rds')
 par(mfrow=c(2,2))
 plot(lm_blender)
 par(mfrow=c(1,1))
 ```
 
-```{r residual-facts, echo=FALSE}
+```{r residualfacts, echo=FALSE}
 facts = c(mean = mean(lm_blender$residuals),
           median = median(lm_blender$residuals),
           variance = var(lm_blender$residuals),
